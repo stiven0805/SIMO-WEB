@@ -1,7 +1,7 @@
 /**
  * LandingView
  * ------------
- * Renderiza la interfaz premium de la Landing Page principal.
+ * Renderiza la interfaz de la Landing Page de SIMÖ.
  *
  * Regla: NO contiene lógica de negocio.
  * Regla: SOLO se comunica con LandingViewModel.
@@ -19,7 +19,7 @@ export class LandingView extends BaseView {
   // ─── Renderizado inicial ──────────────────────────────────────────────────
 
   /**
-   * Genera el HTML completo de la landing page.
+   * Genera el HTML completo de la landing page SIMÖ.
    * @returns {string}
    */
   render() {
@@ -30,164 +30,244 @@ export class LandingView extends BaseView {
         <header class="landing-nav">
           <div class="landing-nav__inner">
             <div class="landing-nav__brand">
-              <span class="landing-nav__icon">◆</span>
-              <span class="landing-nav__name">AppMVVM</span>
+              <span class="landing-nav__logo">SIMÖ</span>
             </div>
             <nav class="landing-nav__links">
-              <a href="#features" class="landing-nav__link">Características</a>
-              <a href="#stats" class="landing-nav__link">Métricas</a>
-              <a href="#cta" class="landing-nav__link">Contacto</a>
-              <button id="nav-login-btn" class="landing-nav__btn">Iniciar Sesión</button>
+              <a href="#quienes-somos" class="landing-nav__link">Quiénes somos</a>
+              <a href="#descargar" class="landing-nav__link">Descargar</a>
+              <a href="#ayuda" class="landing-nav__link landing-nav__link--dropdown">Ayuda Con la app</a>
+              <a href="#colaboraciones" class="landing-nav__link">Colaboraciones</a>
             </nav>
           </div>
         </header>
 
         <!-- ─── HERO ────────────────────────────────────────────────── -->
-        <section class="landing-hero">
-          <div class="landing-hero__glow landing-hero__glow--one"></div>
-          <div class="landing-hero__glow landing-hero__glow--two"></div>
-          <div class="landing-hero__glow landing-hero__glow--three"></div>
+        <section class="landing-hero" id="hero">
+          <!-- Decorations -->
+          ${this._renderHeroDecorations()}
 
-          <div class="landing-hero__content">
-            <span class="landing-hero__badge">✨ Arquitectura MVVM Modular</span>
-            <h1 class="landing-hero__title" id="landing-title">
-              Construye aplicaciones<br/>
-              <span class="landing-hero__highlight">escalables y elegantes</span>
-            </h1>
-            <p class="landing-hero__subtitle" id="landing-desc">
-              Plataforma moderna con patrón MVVM por módulos para equipos de desarrollo.
-              Rápido, modular y listo para producción.
+          <div class="landing-hero__inner">
+            <!-- Robot mascot -->
+            <div class="landing-hero__robot">
+              <img
+                src="./assets/images/robot-simo.png"
+                alt="SIMÖ Robot Mascota"
+                class="landing-hero__robot-img"
+                id="robot-img"
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="landing-hero__content">
+              <p class="landing-hero__greeting" id="landing-greeting">Hola soy</p>
+              <h1 class="landing-hero__title" id="landing-title">SIMÖ</h1>
+              <p class="landing-hero__subtitle">Únete a nosotros</p>
+
+              <div class="landing-hero__text-block">
+                <p class="landing-hero__text">
+                  Soy SIMÖ, <strong>una iniciativa creada para ayudarte a reciclar tus
+                  dispositivos electrónicos</strong> de forma fácil, responsable y con
+                  beneficios para ti.
+                </p>
+              </div>
+
+              <div class="landing-hero__text-block">
+                <p class="landing-hero__text">
+                  Te acompaño en el proceso de <strong>darle otra vida a la tecnología</strong>,
+                  conectándote con opciones de reciclaje seguras mientras ganas
+                  recompensas por cuidar el planeta.
+                </p>
+              </div>
+
+              <div class="landing-hero__text-block">
+                <p class="landing-hero__text">
+                  <a href="#descargar">Descarga la aplicación</a> y empieza a reciclar de una manera sencilla,
+                  consciente y con impacto positivo para el medio ambiente.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── WAVE TRANSITION ──────────────────────────────────────── -->
+        <div class="landing-wave">
+          <span class="landing-wave__star">✦</span>
+          <svg class="landing-wave__svg" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 0C360 70 1080 70 1440 0V80H0V0Z" fill="#FFFCE7"/>
+            <path d="M0 0C360 70 1080 70 1440 0" stroke="#DB0076" stroke-width="0" fill="#DB0076" opacity="0.0"/>
+            <path d="M0 10C360 80 1080 80 1440 10V0C1080 70 360 70 0 0Z" fill="#DB0076"/>
+          </svg>
+        </div>
+
+        <!-- ─── OFFERS ──────────────────────────────────────────────── -->
+        <section class="landing-offers" id="ofertas">
+          <div class="landing-offers__inner">
+            <!-- Left text -->
+            <div class="landing-offers__text">
+              <h2 class="landing-offers__title">
+                <span class="landing-offers__title-top">¡Ofertas</span>
+                <span class="landing-offers__title-bottom">próximas!</span>
+              </h2>
+              <p class="landing-offers__desc">
+                Muy pronto en Simo encontrarás <strong>ofertas y beneficios</strong>
+                especiales diseñados para premiar tu compromiso con el
+                reciclaje electrónico.
+              </p>
+              <p class="landing-offers__desc">
+                Al reciclar tus dispositivos podrás acceder a <strong>recompensas
+                exclusivas, descuentos en marcas aliadas</strong> y experiencias
+                sostenibles que impulsan un estilo de vida más consciente.
+              </p>
+              <p class="landing-offers__desc">
+                Estas ofertas estarán disponibles <strong>dentro de la aplicación</strong> y se
+                actualizarán constantemente para que cada acción que realices
+                tenga un impacto positivo, tanto para ti como para el planeta.
+              </p>
+            </div>
+
+            <!-- Right grid -->
+            <div class="landing-offers__grid-wrapper">
+              <h3 class="landing-offers__grid-title">¡Recicladores buscan tus electrodomésticos!</h3>
+              <div class="landing-offers__grid" id="offers-grid">
+                ${this._renderOfferCards()}
+              </div>
+              <p class="landing-offers__date">Próximamente · <span>18 de julio de 2026</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── COLLABORATORS ────────────────────────────────────────── -->
+        <section class="landing-collabs" id="colaboraciones">
+          <div class="landing-collabs__inner">
+            <h2 class="landing-collabs__title">¡Colaboradores en SIMÖ!</h2>
+            <p class="landing-collabs__desc">
+              Empresas y marcas aliadas que <strong>recompensan tu compromiso</strong> con el reciclaje.
+              Acumula puntos en SIMÖ y canjéalos por beneficios, descuentos y experiencias
+              sostenibles en nuestros establecimientos asociados.
             </p>
-            <div class="landing-hero__actions">
-              <button id="hero-login-btn" class="landing-btn landing-btn--primary">
-                Comenzar Ahora
-                <span class="landing-btn__arrow">→</span>
-              </button>
-              <button id="hero-demo-btn" class="landing-btn landing-btn--ghost">
-                Ver Demo
-              </button>
-            </div>
-          </div>
-
-          <div class="landing-hero__visual">
-            <div class="landing-hero__card landing-hero__card--one">
-              <div class="landing-hero__card-header">
-                <span class="landing-hero__dot landing-hero__dot--red"></span>
-                <span class="landing-hero__dot landing-hero__dot--yellow"></span>
-                <span class="landing-hero__dot landing-hero__dot--green"></span>
-              </div>
-              <div class="landing-hero__card-body">
-                <code class="landing-hero__code">
-                  <span class="code-keyword">class</span> <span class="code-class">UserViewModel</span> {<br/>
-                  &nbsp;&nbsp;<span class="code-keyword">async</span> <span class="code-fn">fetchData</span>() {<br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> data = <span class="code-keyword">await</span> service.<span class="code-fn">get</span>()<br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.<span class="code-fn">setState</span>({ data })<br/>
-                  &nbsp;&nbsp;}<br/>
-                  }
-                </code>
+            <div class="landing-collabs__carousel">
+              <div class="landing-collabs__track" id="collabs-track">
+                ${this._renderCollabLogos()}
+                ${this._renderCollabLogos()}
               </div>
             </div>
-            <div class="landing-hero__card landing-hero__card--two">
-              <div class="landing-hero__card-icon">📊</div>
-              <div class="landing-hero__card-stat">+98%</div>
-              <div class="landing-hero__card-label">Rendimiento</div>
-            </div>
-            <div class="landing-hero__card landing-hero__card--three">
-              <div class="landing-hero__card-icon">🔒</div>
-              <div class="landing-hero__card-stat">Seguro</div>
-              <div class="landing-hero__card-label">Auth integrado</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ─── FEATURES ────────────────────────────────────────────── -->
-        <section class="landing-features" id="features">
-          <div class="landing-features__inner">
-            <span class="landing-section__badge">Características</span>
-            <h2 class="landing-section__title">Todo lo que necesitas para desarrollar</h2>
-            <p class="landing-section__desc">Una arquitectura pensada para equipos que buscan velocidad, calidad y escalabilidad.</p>
-
-            <div class="landing-features__grid">
-              <div class="landing-feature">
-                <div class="landing-feature__icon">⚡</div>
-                <h3 class="landing-feature__title">Ultra Rápido</h3>
-                <p class="landing-feature__desc">Vite + módulos ES nativos. Recarga instantánea en desarrollo y builds optimizados.</p>
-              </div>
-              <div class="landing-feature">
-                <div class="landing-feature__icon">🧩</div>
-                <h3 class="landing-feature__title">Modular</h3>
-                <p class="landing-feature__desc">Cada módulo es independiente con su propio Model, View, ViewModel, Service y Store.</p>
-              </div>
-              <div class="landing-feature">
-                <div class="landing-feature__icon">🔐</div>
-                <h3 class="landing-feature__title">Autenticación</h3>
-                <p class="landing-feature__desc">Sistema de auth completo con JWT, sesión persistente y protección de rutas.</p>
-              </div>
-              <div class="landing-feature">
-                <div class="landing-feature__icon">📡</div>
-                <h3 class="landing-feature__title">Event Bus</h3>
-                <p class="landing-feature__desc">Comunicación desacoplada entre módulos usando un sistema de eventos centralizado.</p>
-              </div>
-              <div class="landing-feature">
-                <div class="landing-feature__icon">🎨</div>
-                <h3 class="landing-feature__title">Diseño Limpio</h3>
-                <p class="landing-feature__desc">CSS con convención BEM, variables reutilizables y diseño responsivo de fábrica.</p>
-              </div>
-              <div class="landing-feature">
-                <div class="landing-feature__icon">🧪</div>
-                <h3 class="landing-feature__title">Testing</h3>
-                <p class="landing-feature__desc">Vitest integrado para testing unitario y de integración con cobertura incluida.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ─── STATS ───────────────────────────────────────────────── -->
-        <section class="landing-stats" id="stats">
-          <div class="landing-stats__inner">
-            <div class="landing-stat">
-              <span class="landing-stat__number">5+</span>
-              <span class="landing-stat__label">Módulos listos</span>
-            </div>
-            <div class="landing-stat">
-              <span class="landing-stat__number">100%</span>
-              <span class="landing-stat__label">JavaScript puro</span>
-            </div>
-            <div class="landing-stat">
-              <span class="landing-stat__number">0</span>
-              <span class="landing-stat__label">Dependencias pesadas</span>
-            </div>
-            <div class="landing-stat">
-              <span class="landing-stat__number">∞</span>
-              <span class="landing-stat__label">Escalabilidad</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ─── CTA ─────────────────────────────────────────────────── -->
-        <section class="landing-cta" id="cta">
-          <div class="landing-cta__inner">
-            <h2 class="landing-cta__title">¿Listo para comenzar?</h2>
-            <p class="landing-cta__desc">Únete y descubre cómo la arquitectura MVVM modular transforma tu flujo de trabajo.</p>
-            <button id="cta-login-btn" class="landing-btn landing-btn--primary landing-btn--lg">
-              Crear Cuenta Gratis
-              <span class="landing-btn__arrow">→</span>
-            </button>
           </div>
         </section>
 
         <!-- ─── FOOTER ──────────────────────────────────────────────── -->
         <footer class="landing-footer">
           <div class="landing-footer__inner">
-            <div class="landing-footer__brand">
-              <span class="landing-nav__icon">◆</span> AppMVVM
+            <!-- Top: logo + social -->
+            <div class="landing-footer__top">
+              <span class="landing-footer__logo">SIMÖ</span>
+              <div class="landing-footer__social">
+                <a href="#" class="landing-footer__social-link" aria-label="Twitter">𝕏</a>
+                <a href="#" class="landing-footer__social-link" aria-label="YouTube">▶</a>
+                <a href="#" class="landing-footer__social-link" aria-label="Google">G</a>
+                <a href="#" class="landing-footer__social-link" aria-label="Instagram">📷</a>
+                <a href="#" class="landing-footer__social-link" aria-label="Facebook">f</a>
+              </div>
             </div>
-            <p class="landing-footer__copy">© 2026 AppMVVM. Todos los derechos reservados.</p>
+
+            <!-- Columns -->
+            <div class="landing-footer__columns">
+              <div class="landing-footer__col">
+                <p class="landing-footer__col-title">Aplicación</p>
+                <a href="#" class="landing-footer__col-link">Descargar app</a>
+                <a href="#" class="landing-footer__col-link">Dispositivos disponibles</a>
+              </div>
+              <div class="landing-footer__col">
+                <p class="landing-footer__col-title">Beneficios</p>
+                <a href="#" class="landing-footer__col-link">Próximas ofertas</a>
+                <a href="#" class="landing-footer__col-link">Empresas colaboradoras</a>
+              </div>
+              <div class="landing-footer__col">
+                <p class="landing-footer__col-title">¿Qué somos?</p>
+                <a href="#" class="landing-footer__col-link">Nuestros ideales</a>
+              </div>
+              <div class="landing-footer__col">
+                <p class="landing-footer__col-title">Ayuda</p>
+                <a href="#" class="landing-footer__col-link">Correo de soporte</a>
+              </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="landing-footer__bottom">
+              <p class="landing-footer__copy">© 2026 SIMÖ – Reciclar para transformar</p>
+              <a href="#" class="landing-footer__terms">Términos y condiciones</a>
+            </div>
           </div>
         </footer>
 
       </div>
     `
+  }
+
+  // ─── Helpers de renderizado ────────────────────────────────────────────────
+
+  /**
+   * Renderiza las decoraciones geométricas del hero (flores, triángulos, etc.).
+   * @returns {string}
+   */
+  _renderHeroDecorations() {
+    const flowerSvg = `
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="45" y="5" width="30" height="110" rx="2" fill="#FFCD1C"/>
+        <rect x="5" y="45" width="110" height="30" rx="2" fill="#FFCD1C"/>
+        <rect x="21" y="21" width="30" height="78" rx="2" fill="#FFCD1C" transform="rotate(45 60 60)"/>
+        <rect x="21" y="21" width="78" height="30" rx="2" fill="#FFCD1C" transform="rotate(45 60 60)"/>
+        <circle cx="60" cy="60" r="22" fill="#FFCD1C"/>
+        <circle cx="60" cy="60" r="17" fill="#334E9D"/>
+      </svg>
+    `
+    return `
+      <div class="landing-hero__flower landing-hero__flower--big">${flowerSvg}</div>
+      <div class="landing-hero__flower landing-hero__flower--small">${flowerSvg}</div>
+      <div class="landing-hero__circle landing-hero__circle--blue"></div>
+      <div class="landing-hero__circle landing-hero__circle--yellow-ring"></div>
+      <div class="landing-hero__triangle landing-hero__triangle--yellow-1"></div>
+      <div class="landing-hero__triangle landing-hero__triangle--yellow-2"></div>
+      <div class="landing-hero__dot landing-hero__dot--1"></div>
+      <div class="landing-hero__dot landing-hero__dot--2"></div>
+    `
+  }
+
+  /**
+   * Renderiza las tarjetas de ofertas con datos del ViewModel.
+   * @returns {string}
+   */
+  _renderOfferCards() {
+    const offers = this._viewModel.getState('offers') || []
+    return offers.map(offer => `
+      <div class="offer-card">
+        <div class="offer-card__icon-wrapper">
+          <span class="offer-card__badge">${offer.quantity}</span>
+          <span class="offer-card__icon">${offer.icon}</span>
+        </div>
+        <div class="offer-card__points">
+          <span class="offer-card__points-icon">🪙</span>
+          ${offer.points}
+        </div>
+        <p class="offer-card__name">${offer.name}</p>
+        <p class="offer-card__dest">Destino: ${offer.destination}</p>
+      </div>
+    `).join('')
+  }
+
+  /**
+   * Renderiza los logos de colaboradores para el carrusel.
+   * Se llama dos veces en render() para crear el efecto de scroll infinito.
+   * @returns {string}
+   */
+  _renderCollabLogos() {
+    const collaborators = this._viewModel.getState('collaborators') || []
+    return collaborators.map(collab => `
+      <div class="landing-collabs__logo-item">
+        <span class="landing-collabs__logo-text landing-collabs__logo-text--${collab.type}">
+          ${collab.name}
+        </span>
+      </div>
+    `).join('')
   }
 
   // ─── Binding del ViewModel ────────────────────────────────────────────────
@@ -201,9 +281,9 @@ export class LandingView extends BaseView {
       if (el) el.textContent = title
     })
 
-    this._subscribe('description', description => {
-      const el = this.$('#landing-desc')
-      if (el) el.textContent = description
+    this._subscribe('greeting', greeting => {
+      const el = this.$('#landing-greeting')
+      if (el) el.textContent = greeting
     })
   }
 
@@ -213,20 +293,19 @@ export class LandingView extends BaseView {
    * Enlaza los botones de la UI con los comandos del ViewModel.
    */
   _bindEvents() {
-    const handleLoginClick = () => {
-      this._viewModel.goToLogin()
-    }
-
-    this._addEvent('#nav-login-btn', 'click', handleLoginClick)
-    this._addEvent('#hero-login-btn', 'click', handleLoginClick)
-    this._addEvent('#cta-login-btn', 'click', handleLoginClick)
-
-    // Smooth scroll para enlaces internos
-    this._addEvent('#hero-demo-btn', 'click', () => {
-      const featuresSection = document.querySelector('#features')
-      if (featuresSection) {
-        featuresSection.scrollIntoView({ behavior: 'smooth' })
-      }
+    // Smooth scroll para enlaces internos del nav
+    const navLinks = this.$$('.landing-nav__link')
+    navLinks.forEach(link => {
+      this._addEvent(link, 'click', (event) => {
+        const href = link.getAttribute('href')
+        if (href && href.startsWith('#')) {
+          event.preventDefault()
+          const targetSection = document.querySelector(href)
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' })
+          }
+        }
+      })
     })
   }
 }
