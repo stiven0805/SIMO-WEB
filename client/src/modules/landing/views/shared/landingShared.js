@@ -10,11 +10,13 @@
 import { eventBus } from '../../../../shared/utils/eventBus.js'
 
 /**
- * Renderiza el HTML del Nav con la barra magenta superior.
+ * Renderiza el HTML del Nav con la barra superior.
  * @param {string} activePage - Página activa para resaltar ('home'|'quienes-somos'|'descargar'|'colaboraciones')
+ * @param {string} theme - Tema del header ('default'|'blue')
  * @returns {string}
  */
-export function renderNav(activePage = 'home') {
+export function renderNav(activePage = 'home', theme = 'default') {
+  const themeClass = theme === 'blue' ? 'landing-header--blue' : ''
   /**
    * Genera la clase activa si corresponde.
    * @param {string} page
@@ -23,7 +25,8 @@ export function renderNav(activePage = 'home') {
   const activeClass = (page) => page === activePage ? 'landing-nav__link--active' : ''
 
   return `
-    <!-- ─── TOP STRIP (Barra magenta arriba del nav) ──────── -->
+    <!-- ─── HEADER WRAPPER ──────────────────────────────────── -->
+    <div class="landing-header ${themeClass}">
     <div class="landing-topstrip"></div>
 
     <!-- ─── NAV ───────────────────────────────────────────── -->
@@ -53,6 +56,7 @@ export function renderNav(activePage = 'home') {
         </button>
       </div>
     </header>
+    </div>
   `
 }
 

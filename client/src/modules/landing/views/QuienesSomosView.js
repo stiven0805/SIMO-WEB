@@ -28,7 +28,7 @@ export class QuienesSomosView extends BaseView {
     return `
       <div class="landing">
 
-        ${renderNav('quienes-somos')}
+        ${renderNav('quienes-somos', 'blue')}
 
         <!-- ─── ¿QUÉ ES SIMÖ? ─────────────────────────────────── -->
         <section class="about-what" id="que-es-simo">
