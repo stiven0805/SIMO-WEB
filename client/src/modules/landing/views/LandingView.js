@@ -1,7 +1,8 @@
 /**
  * LandingView
  * ------------
- * Renderiza la interfaz de la Landing Page de SIMÖ.
+ * Renderiza la interfaz de la Landing Page principal de SIMÖ.
+ * Solo muestra: Nav + Hero + Ofertas + Colaboradores + Footer.
  *
  * Regla: NO contiene lógica de negocio.
  * Regla: SOLO se comunica con LandingViewModel.
@@ -9,6 +10,7 @@
 
 import { BaseView } from '../../../core/BaseView.js'
 import { LandingViewModel } from '../viewmodels/LandingViewModel.js'
+import { renderNav, renderFooter, bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
 
 export class LandingView extends BaseView {
   constructor(options = {}) {
@@ -26,28 +28,13 @@ export class LandingView extends BaseView {
     return `
       <div class="landing">
 
-        <!-- ─── NAV ─────────────────────────────────────────────────── -->
-        <header class="landing-nav">
-          <div class="landing-nav__inner">
-            <div class="landing-nav__brand">
-              <span class="landing-nav__logo">SIMÖ</span>
-            </div>
-            <nav class="landing-nav__links">
-              <a href="#quienes-somos" class="landing-nav__link">Quiénes somos</a>
-              <a href="#descargar" class="landing-nav__link">Descargar</a>
-              <a href="#ayuda" class="landing-nav__link landing-nav__link--dropdown">Ayuda Con la app</a>
-              <a href="#colaboraciones" class="landing-nav__link">Colaboraciones</a>
-            </nav>
-          </div>
-        </header>
+        ${renderNav('home')}
 
-        <!-- ─── HERO ────────────────────────────────────────────────── -->
+        <!-- ─── HERO ────────────────────────────────────────────── -->
         <section class="landing-hero" id="hero">
-          <!-- Decorations -->
           ${this._renderHeroDecorations()}
 
           <div class="landing-hero__inner">
-            <!-- Robot mascot -->
             <div class="landing-hero__robot">
               <img
                 src="./assets/images/robot-simo.png"
@@ -57,7 +44,6 @@ export class LandingView extends BaseView {
               />
             </div>
 
-            <!-- Content -->
             <div class="landing-hero__content">
               <p class="landing-hero__greeting" id="landing-greeting">Hola soy</p>
               <h1 class="landing-hero__title" id="landing-title">SIMÖ</h1>
@@ -81,7 +67,7 @@ export class LandingView extends BaseView {
 
               <div class="landing-hero__text-block">
                 <p class="landing-hero__text">
-                  <a href="#descargar">Descarga la aplicación</a> y empieza a reciclar de una manera sencilla,
+                  <a href="#descargar" class="landing-nav__page-link" data-page="descargar">Descarga la aplicación</a> y empieza a reciclar de una manera sencilla,
                   consciente y con impacto positivo para el medio ambiente.
                 </p>
               </div>
@@ -89,20 +75,18 @@ export class LandingView extends BaseView {
           </div>
         </section>
 
-        <!-- ─── WAVE TRANSITION ──────────────────────────────────────── -->
+        <!-- ─── WAVE TRANSITION ────────────────────────────────── -->
         <div class="landing-wave">
           <span class="landing-wave__star">✦</span>
           <svg class="landing-wave__svg" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path d="M0 0C360 70 1080 70 1440 0V80H0V0Z" fill="#FFFCE7"/>
-            <path d="M0 0C360 70 1080 70 1440 0" stroke="#DB0076" stroke-width="0" fill="#DB0076" opacity="0.0"/>
             <path d="M0 10C360 80 1080 80 1440 10V0C1080 70 360 70 0 0Z" fill="#DB0076"/>
           </svg>
         </div>
 
-        <!-- ─── OFFERS ──────────────────────────────────────────────── -->
+        <!-- ─── OFFERS ──────────────────────────────────────────── -->
         <section class="landing-offers" id="ofertas">
           <div class="landing-offers__inner">
-            <!-- Left text -->
             <div class="landing-offers__text">
               <h2 class="landing-offers__title">
                 <span class="landing-offers__title-top">¡Ofertas</span>
@@ -125,7 +109,6 @@ export class LandingView extends BaseView {
               </p>
             </div>
 
-            <!-- Right grid -->
             <div class="landing-offers__grid-wrapper">
               <h3 class="landing-offers__grid-title">¡Recicladores buscan tus electrodomésticos!</h3>
               <div class="landing-offers__grid" id="offers-grid">
@@ -136,7 +119,7 @@ export class LandingView extends BaseView {
           </div>
         </section>
 
-        <!-- ─── COLLABORATORS ────────────────────────────────────────── -->
+        <!-- ─── COLLABORATORS ────────────────────────────────────── -->
         <section class="landing-collabs" id="colaboraciones">
           <div class="landing-collabs__inner">
             <h2 class="landing-collabs__title">¡Colaboradores en SIMÖ!</h2>
@@ -154,50 +137,7 @@ export class LandingView extends BaseView {
           </div>
         </section>
 
-        <!-- ─── FOOTER ──────────────────────────────────────────────── -->
-        <footer class="landing-footer">
-          <div class="landing-footer__inner">
-            <!-- Top: logo + social -->
-            <div class="landing-footer__top">
-              <span class="landing-footer__logo">SIMÖ</span>
-              <div class="landing-footer__social">
-                <a href="#" class="landing-footer__social-link" aria-label="Twitter">𝕏</a>
-                <a href="#" class="landing-footer__social-link" aria-label="YouTube">▶</a>
-                <a href="#" class="landing-footer__social-link" aria-label="Google">G</a>
-                <a href="#" class="landing-footer__social-link" aria-label="Instagram">📷</a>
-                <a href="#" class="landing-footer__social-link" aria-label="Facebook">f</a>
-              </div>
-            </div>
-
-            <!-- Columns -->
-            <div class="landing-footer__columns">
-              <div class="landing-footer__col">
-                <p class="landing-footer__col-title">Aplicación</p>
-                <a href="#" class="landing-footer__col-link">Descargar app</a>
-                <a href="#" class="landing-footer__col-link">Dispositivos disponibles</a>
-              </div>
-              <div class="landing-footer__col">
-                <p class="landing-footer__col-title">Beneficios</p>
-                <a href="#" class="landing-footer__col-link">Próximas ofertas</a>
-                <a href="#" class="landing-footer__col-link">Empresas colaboradoras</a>
-              </div>
-              <div class="landing-footer__col">
-                <p class="landing-footer__col-title">¿Qué somos?</p>
-                <a href="#" class="landing-footer__col-link">Nuestros ideales</a>
-              </div>
-              <div class="landing-footer__col">
-                <p class="landing-footer__col-title">Ayuda</p>
-                <a href="#" class="landing-footer__col-link">Correo de soporte</a>
-              </div>
-            </div>
-
-            <!-- Bottom -->
-            <div class="landing-footer__bottom">
-              <p class="landing-footer__copy">© 2026 SIMÖ – Reciclar para transformar</p>
-              <a href="#" class="landing-footer__terms">Términos y condiciones</a>
-            </div>
-          </div>
-        </footer>
+        ${renderFooter()}
 
       </div>
     `
@@ -206,7 +146,7 @@ export class LandingView extends BaseView {
   // ─── Helpers de renderizado ────────────────────────────────────────────────
 
   /**
-   * Renderiza las decoraciones geométricas del hero (flores, triángulos, etc.).
+   * Renderiza las decoraciones geométricas del hero.
    * @returns {string}
    */
   _renderHeroDecorations() {
@@ -256,7 +196,6 @@ export class LandingView extends BaseView {
 
   /**
    * Renderiza los logos de colaboradores para el carrusel.
-   * Se llama dos veces en render() para crear el efecto de scroll infinito.
    * @returns {string}
    */
   _renderCollabLogos() {
@@ -293,12 +232,16 @@ export class LandingView extends BaseView {
    * Enlaza los botones de la UI con los comandos del ViewModel.
    */
   _bindEvents() {
-    // Smooth scroll para enlaces internos del nav
-    const navLinks = this.$$('.landing-nav__link')
-    navLinks.forEach(link => {
+    bindNavEvents(this)
+    bindFooterEvents(this)
+
+    // Smooth scroll para enlaces internos (secciones de esta misma página)
+    const internalLinks = this.$$('a[href^="#"]')
+    internalLinks.forEach(link => {
+      if (link.classList.contains('landing-nav__page-link')) return
       this._addEvent(link, 'click', (event) => {
         const href = link.getAttribute('href')
-        if (href && href.startsWith('#')) {
+        if (href && href.startsWith('#') && href.length > 1) {
           event.preventDefault()
           const targetSection = document.querySelector(href)
           if (targetSection) {

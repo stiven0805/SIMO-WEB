@@ -9,6 +9,8 @@ import { httpClient } from './src/shared/utils/httpClient.js'
 import { authStore } from './src/modules/auth/store/authStore.js'
 import { eventBus } from './src/shared/utils/eventBus.js'
 import { LandingView } from './src/modules/landing/views/LandingView.js'
+import { QuienesSomosView } from './src/modules/landing/views/QuienesSomosView.js'
+import { DescargarView } from './src/modules/landing/views/DescargarView.js'
 import { LoginView } from './src/modules/auth/views/LoginView.js'
 import { DashboardView } from './src/modules/dashboard/views/DashboardView.js'
 
@@ -39,6 +41,17 @@ async function navigateTo(ViewClass) {
 
   currentView = new ViewClass({ container: '#app' })
   await currentView.mount()
+
+  // Scroll al inicio al cambiar de página
+  window.scrollTo({ top: 0, behavior: 'instant' })
+}
+
+// ─── Mapa de páginas públicas ────────────────────────────────────────────
+
+const PAGE_MAP = {
+  'home': LandingView,
+  'quienes-somos': QuienesSomosView,
+  'descargar': DescargarView,
 }
 
 // ─── Lógica de navegación por sesión ─────────────────────────────────────
@@ -46,7 +59,6 @@ async function navigateTo(ViewClass) {
 if (authStore.isAuthenticated) {
   navigateTo(DashboardView)
 } else {
-  // Ahora la ruta base por defecto es el Landing
   navigateTo(LandingView)
 }
 
@@ -64,4 +76,15 @@ eventBus.on('auth:logout', () => {
 
 eventBus.on('landing:goToLogin', () => {
   navigateTo(LoginView)
+})
+
+/**
+ * Navegación entre páginas públicas del landing.
+ * Emitido por los enlaces del nav compartido.
+ */
+eventBus.on('landing:navigate', (page) => {
+  const ViewClass = PAGE_MAP[page]
+  if (ViewClass) {
+    navigateTo(ViewClass)
+  }
 })
