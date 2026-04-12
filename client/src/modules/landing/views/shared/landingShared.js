@@ -41,12 +41,12 @@ export function renderNav(activePage = 'home', theme = 'default') {
           <div class="landing-nav__dropdown" id="nav-dropdown-ayuda">
             <a href="#" class="landing-nav__link landing-nav__link--dropdown" id="dropdown-toggle-ayuda">Ayuda Con la app</a>
             <div class="landing-nav__dropdown-menu" id="dropdown-menu-ayuda">
-              <a href="#" class="landing-nav__dropdown-item">Cómo reciclar</a>
-              <a href="#" class="landing-nav__dropdown-item">Cómo canjear recompensas</a>
-              <a href="#" class="landing-nav__dropdown-item">Selección de roles y Modificar usuario</a>
+              <a href="#" class="landing-nav__dropdown-item landing-nav__page-link" data-page="como-reciclar">Cómo reciclar</a>
+              <a href="#" class="landing-nav__dropdown-item landing-nav__page-link" data-page="como-canjear">Cómo canjear recompensas</a>
+              <a href="#" class="landing-nav__dropdown-item landing-nav__page-link" data-page="roles">Selección de roles y Modificar usuario</a>
             </div>
           </div>
-          <a href="#" class="landing-nav__link landing-nav__page-link ${activeClass('colaboraciones')}" data-page="home">Colaboraciones</a>
+          <a href="#" class="landing-nav__link landing-nav__page-link ${activeClass('colaboraciones')}" data-page="colaboraciones">Colaboraciones</a>
           <button class="landing-nav__login-btn" id="nav-login-btn">Iniciar Sesión</button>
         </nav>
         <button class="landing-nav__hamburger" id="nav-hamburger" aria-label="Menú">
@@ -175,6 +175,104 @@ export function bindNavEvents(view) {
 }
 
 /**
+ * Renderiza el HTML del Nav para usuarios autenticados.
+ * Muestra icono de perfil en lugar de "Iniciar Sesión".
+ * @param {string} activePage - Página activa
+ * @returns {string}
+ */
+export function renderAuthNav(activePage = '') {
+  const activeClass = (page) => page === activePage ? 'landing-nav__link--active' : ''
+
+  return `
+    <div class="landing-header">
+    <div class="landing-topstrip"></div>
+    <header class="landing-nav">
+      <div class="landing-nav__inner">
+        <div class="landing-nav__brand">
+          <a href="#" class="landing-nav__logo landing-nav__page-link" data-page="home">SIMÖ</a>
+        </div>
+        <nav class="landing-nav__links" id="nav-links">
+          <a href="#" class="landing-nav__link landing-nav__page-link ${activeClass('quienes-somos')}" data-page="quienes-somos">Quiénes somos</a>
+          <a href="#" class="landing-nav__link landing-nav__page-link ${activeClass('descargar')}" data-page="descargar">Descargar</a>
+          <div class="landing-nav__dropdown" id="nav-dropdown-ayuda">
+            <a href="#" class="landing-nav__link landing-nav__link--dropdown" id="dropdown-toggle-ayuda">Ayuda Con la app</a>
+            <div class="landing-nav__dropdown-menu" id="dropdown-menu-ayuda">
+              <a href="#" class="landing-nav__dropdown-item landing-nav__page-link" data-page="como-reciclar">Cómo reciclar</a>
+              <a href="#" class="landing-nav__dropdown-item landing-nav__page-link" data-page="como-canjear">Cómo canjear recompensas</a>
+              <a href="#" class="landing-nav__dropdown-item landing-nav__page-link" data-page="roles">Selección de roles y Modificar usuario</a>
+            </div>
+          </div>
+          <a href="#" class="landing-nav__link landing-nav__page-link ${activeClass('colaboraciones')}" data-page="colaboraciones">Colaboraciones</a>
+          <button class="landing-nav__user-btn" id="nav-user-btn" aria-label="Perfil de usuario">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </nav>
+        <button class="landing-nav__hamburger" id="nav-hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+    </div>
+  `
+}
+
+/**
+ * Enlaza eventos del Nav autenticado.
+ * @param {import('../../../../core/BaseView').BaseView} view
+ */
+export function bindAuthNavEvents(view) {
+  // Navegación entre páginas
+  const pageLinks = view.$$('.landing-nav__page-link')
+  pageLinks.forEach(link => {
+    view._addEvent(link, 'click', (event) => {
+      event.preventDefault()
+      const page = link.getAttribute('data-page')
+      if (page) {
+        eventBus.emit('landing:navigate', page)
+      }
+    })
+  })
+
+  // Dropdown "Ayuda con la app"
+  const dropdownToggle = view.$('#dropdown-toggle-ayuda')
+  const dropdownContainer = view.$('#nav-dropdown-ayuda')
+  if (dropdownToggle && dropdownContainer) {
+    view._addEvent(dropdownToggle, 'click', (event) => {
+      event.preventDefault()
+      event.stopPropagation()
+      dropdownContainer.classList.toggle('landing-nav__dropdown--open')
+    })
+    view._addEvent(document, 'click', (event) => {
+      if (!dropdownContainer.contains(event.target)) {
+        dropdownContainer.classList.remove('landing-nav__dropdown--open')
+      }
+    })
+  }
+
+  // Icono de usuario → ir al perfil
+  const userBtn = view.$('#nav-user-btn')
+  if (userBtn) {
+    view._addEvent(userBtn, 'click', () => {
+      eventBus.emit('landing:navigate', 'perfil')
+    })
+  }
+
+  // Hamburger móvil
+  const hamburger = view.$('#nav-hamburger')
+  const navLinksEl = view.$('#nav-links')
+  if (hamburger && navLinksEl) {
+    view._addEvent(hamburger, 'click', () => {
+      hamburger.classList.toggle('landing-nav__hamburger--active')
+      navLinksEl.classList.toggle('landing-nav__links--open')
+    })
+  }
+}
+
+
+/**
  * Enlaza los eventos del Footer compartido.
  * @param {import('../../../../core/BaseView').BaseView} view - Instancia de la View
  */
@@ -190,3 +288,4 @@ export function bindFooterEvents(view) {
     })
   })
 }
+

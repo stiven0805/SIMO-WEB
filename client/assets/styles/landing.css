@@ -37,19 +37,19 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HEADER WRAPPER (Shared floating nav pattern)
+   HEADER WRAPPER — franja rosa con nav flotante beige
    ─────────────────────────────────────────────────────────────── */
 .landing-header {
   position: relative;
   background: var(--simo-rosa);
-  padding: 0.8rem 1.5rem 0.8rem;
+  padding: 0.7rem 1.2rem 0.7rem;
 }
 
 .landing-topstrip {
   display: none;
 }
 
-/* ─── Blue header theme (Quiénes somos) ────────────────────── */
+/* Tema azul (Quiénes somos y páginas de Ayuda) */
 .landing-header--blue {
   background: var(--simo-azul);
 }
@@ -66,6 +66,7 @@
   background: var(--simo-beige);
   border-bottom: none;
   border-radius: 12px;
+  box-shadow: none;
 }
 
 .landing-nav__inner {
@@ -74,8 +75,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-  height: 64px;
+  padding: 0 2.5rem;
+  height: 60px;
 }
 
 .landing-nav__brand {
@@ -83,18 +84,19 @@
   align-items: center;
 }
 
+/* Logo SIMÖ: solo texto rosa, sin caja ni fondo */
 .landing-nav__logo {
-  background: var(--simo-rosa);
-  color: var(--simo-white);
+  color: var(--simo-rosa);
+  background: transparent;
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: 0.06em;
-  padding: 0.4rem 1.1rem;
-  border-radius: 8px;
+  font-size: 1.9rem;
+  letter-spacing: 0.04em;
+  padding: 0;
+  border-radius: 0;
   text-decoration: none;
   display: inline-block;
-  line-height: 1.3;
+  line-height: 1;
   cursor: pointer;
 }
 
@@ -779,7 +781,8 @@
 .landing-footer {
   background: var(--simo-beige);
   padding: 3rem 2rem 1.5rem;
-  border-top: 3px solid var(--simo-rosa);
+  /* Sin borde rosa: el footer es limpio sobre el beige */
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .landing-footer__inner {
@@ -796,11 +799,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Logo SIMÖ en el footer: texto rosa, negrita */
 .landing-footer__logo {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: 2rem;
-  color: var(--simo-text-dark);
+  font-size: 2.2rem;
+  color: var(--simo-rosa);
   letter-spacing: 0.04em;
   text-decoration: none;
   cursor: pointer;
@@ -842,7 +846,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--simo-text-dark);
+  color: var(--simo-rosa);
   margin-bottom: 0.6rem;
   text-decoration: underline;
   text-underline-offset: 3px;

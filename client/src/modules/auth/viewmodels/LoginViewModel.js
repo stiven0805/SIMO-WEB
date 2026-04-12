@@ -52,28 +52,17 @@ export class LoginViewModel extends BaseViewModel {
 
     this.startLoading()
 
-    try {
-      const credentials = {
-        email: this.getState('email'),
-        password: this.getState('password'),
+    // ── MODO DEMO (sin backend) ─────────────────────────────────────────────
+    // TODO: Reemplazar con llamada real cuando el backend esté listo.
+    await new Promise(resolve => setTimeout(resolve, 600)) // simula latencia
+    this.stopLoading()
+    eventBus.emit('auth:loginSuccess', {
+      user: {
+        name: 'Juan Sebastián Restrepo Gómez',
+        email: this.getState('email') || 'juan.restrepo@gmail.com',
       }
-
-      const sessionData = await authService.login(credentials)
-
-      // Persistir sesión en el store del módulo
-      authStore.setSession(sessionData)
-
-      // Configurar el token para futuras peticiones
-      httpClient.setAuthToken(sessionData.token)
-
-      this.stopLoading()
-
-      // Notificar a otros módulos que el login fue exitoso
-      eventBus.emit('auth:loginSuccess', { user: sessionData.user })
-
-    } catch (error) {
-      this.setError(error.message || 'Credenciales incorrectas.')
-    }
+    })
+    // ── FIN MODO DEMO ───────────────────────────────────────────────────────
   }
 
   // ─── Validación ───────────────────────────────────────────────────────────

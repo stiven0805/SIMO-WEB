@@ -9,6 +9,7 @@
 
 import { BaseView } from '../../../core/BaseView.js'
 import { LoginViewModel } from '../viewmodels/LoginViewModel.js'
+import { eventBus } from '../../../shared/utils/eventBus.js'
 
 export class LoginView extends BaseView {
   constructor(options = {}) {
@@ -20,46 +21,58 @@ export class LoginView extends BaseView {
 
   render() {
     return `
-      <div class="login-container">
-        <div class="login-card">
-          <h1 class="login-title">Iniciar sesión</h1>
+      <div class="auth-modal__overlay" id="auth-overlay">
+        <div class="auth-modal__card">
+          <h1 class="auth-modal__title">¡Bienvenido a SIMÖ!</h1>
 
-          <div id="login-error" class="alert alert--error" style="display:none;"></div>
+          <div id="login-error" class="alert alert--error" style="display:none; margin-top:1rem;"></div>
 
-          <form id="login-form" novalidate>
-            <div class="form-group">
-              <label class="form-label" for="email">Email</label>
+          <form id="login-form" class="auth-modal__form" novalidate>
+            <div class="auth-modal__form-group">
+              <label class="auth-modal__label" for="email">Correo electrónico</label>
               <input
-                class="form-input"
+                class="auth-modal__input"
                 type="email"
                 id="email"
                 name="email"
-                placeholder="tu@email.com"
+                placeholder="Correo"
                 autocomplete="email"
               />
               <span class="form-error" id="email-error"></span>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="password">Contraseña</label>
+            <div class="auth-modal__form-group">
+              <label class="auth-modal__label" for="password">Contraseña</label>
               <input
-                class="form-input"
+                class="auth-modal__input"
                 type="password"
                 id="password"
                 name="password"
-                placeholder="••••••••"
+                placeholder="Contraseña"
                 autocomplete="current-password"
               />
               <span class="form-error" id="password-error"></span>
             </div>
 
-            <button
-              class="btn btn--primary btn--full"
-              type="submit"
-              id="login-submit"
-            >
-              Ingresar
-            </button>
+            <a href="#" class="auth-modal__link" id="link-recovery">¿Olvidaste tu contraseña?</a>
+
+            <div class="auth-modal__actions">
+              <button
+                class="auth-modal__btn auth-modal__btn--primary"
+                type="submit"
+                id="login-submit"
+              >
+                Iniciar sesión
+              </button>
+              
+              <button
+                class="auth-modal__btn auth-modal__btn--secondary"
+                type="button"
+                id="btn-register"
+              >
+                Registrarse
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -73,7 +86,7 @@ export class LoginView extends BaseView {
       const btn = this.$('#login-submit')
       if (!btn) return
       btn.disabled = isLoading
-      btn.textContent = isLoading ? 'Ingresando...' : 'Ingresar'
+      btn.textContent = isLoading ? 'Iniciando...' : 'Iniciar sesión'
     })
 
     this._subscribe('error', error => {
@@ -95,6 +108,14 @@ export class LoginView extends BaseView {
   // ─── Binding de eventos DOM ───────────────────────────────────────────────
 
   _bindEvents() {
+    // Cerrar modal al clickear afuera de la tarjeta
+    this._addEvent('#auth-overlay', 'click', e => {
+      if (e.target.id === 'auth-overlay') {
+        eventBus.emit('auth:closeModal')
+      }
+    })
+
+    // Actualizar campos
     this._addEvent('#email', 'input', e => {
       this._viewModel.updateField('email', e.target.value)
     })
@@ -103,9 +124,20 @@ export class LoginView extends BaseView {
       this._viewModel.updateField('password', e.target.value)
     })
 
+    // Submits y Navegación
     this._addEvent('#login-form', 'submit', async e => {
       e.preventDefault()
       await this._viewModel.submitLogin()
+    })
+
+    this._addEvent('#link-recovery', 'click', e => {
+      e.preventDefault()
+      eventBus.emit('auth:goToRecovery')
+    })
+
+    this._addEvent('#btn-register', 'click', e => {
+      e.preventDefault()
+      eventBus.emit('auth:goToRegister')
     })
   }
 
@@ -120,7 +152,11 @@ export class LoginView extends BaseView {
 
       const message = fieldErrors[field] || ''
       errorEl.textContent = message
-      inputEl.classList.toggle('form-input--error', !!message)
+      if (message) {
+        inputEl.style.borderColor = '#dc2626'
+      } else {
+        inputEl.style.borderColor = 'var(--simo-text-dark, #1a1a1a)'
+      }
     })
   }
 }

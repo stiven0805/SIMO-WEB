@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════════════════════════
+   auth-modal.css — Estilos para Modales de Autenticación
+   Convención: BEM (Block__Element--Modifier)
+   ─────────────────────────────────────────────────────────────── */
+
+.auth-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-start; /* Alineado arriba para que quede como en el mockup */
+  justify-content: center;
+  z-index: 1000;
+  padding: 4.5rem 1rem 1rem; /* Espacio desde el top para dejar el nav visible */
+  animation: fadeIn 0.25s ease;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.auth-modal__card {
+  background: var(--simo-beige, #FFFCE7);
+  border-radius: 20px;
+  padding: 1.8rem 2.2rem 2rem;
+  width: 100%;
+  max-width: 380px;     /* Más estrecho, como el mockup */
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  animation: slideUp 0.25s ease;
+  flex-shrink: 0;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-modal__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.7rem;   /* Reducido de 2.2rem */
+  font-weight: 800;
+  color: var(--simo-text-dark, #1a1a1a);
+  margin-bottom: 0.2rem;
+}
+
+.auth-modal__subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--simo-text-dark, #1a1a1a);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.auth-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;         /* Reducido */
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.auth-modal__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.auth-modal__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--simo-text-dark, #1a1a1a);
+  padding-left: 0.4rem;
+}
+
+.auth-modal__input {
+  width: 100%;
+  padding: 0.6rem 1rem;   /* Más compacto */
+  font-size: 0.9rem;
+  border: 1px solid rgba(0,0,0,0.35);
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: var(--simo-text-dark, #1a1a1a);
+}
+
+.auth-modal__input::placeholder {
+  color: #aaa;
+}
+
+.auth-modal__input:focus {
+  border-color: var(--simo-rosa, #DB0076);
+  border-width: 1.5px;
+  box-shadow: 0 0 0 3px rgba(219, 0, 118, 0.1);
+}
+
+.auth-modal__helper-text {
+  font-size: 0.72rem;
+  color: var(--simo-text-gray, #555);
+  text-align: left;
+  margin-top: 0.15rem;
+  padding-left: 0.4rem;
+}
+
+.auth-modal__link {
+  font-size: 0.8rem;
+  color: var(--simo-azul, #334E9D);
+  text-decoration: none;
+  font-weight: 600;
+  align-self: flex-start;
+  padding-left: 0.4rem;
+  margin-top: -0.25rem;
+}
+
+.auth-modal__link:hover {
+  text-decoration: underline;
+}
+
+.auth-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.auth-modal__btn {
+  width: 100%;
+  padding: 0.7rem;      /* Más compacto */
+  border-radius: 50px;  /* Estilo "pill" como en el mockup */
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.auth-modal__btn:active {
+  transform: scale(0.98);
+}
+
+.auth-modal__btn--primary {
+  background: var(--simo-rosa, #DB0076);
+  color: #fff;
+}
+
+.auth-modal__btn--primary:hover {
+  background: var(--simo-rosa-dark, #b80063);
+}
+
+.auth-modal__btn--secondary {
+  background: var(--simo-rosa, #DB0076);
+  color: #fff;
+}
+
+.auth-modal__btn--secondary:hover {
+  background: var(--simo-rosa-dark, #b80063);
+}
+
+/* Modificador para modales informativos (Ej: Correo enviado, Confirma tu cuenta) */
+.auth-modal__card--info {
+  padding: 3rem 2.2rem;
+}
+
+/* ─── Responsive ────── */
+@media (max-width: 480px) {
+  .auth-modal__overlay {
+    padding: 4rem 0.75rem 1rem;
+  }
+  .auth-modal__card {
+    padding: 1.4rem 1.2rem 1.6rem;
+  }
+}

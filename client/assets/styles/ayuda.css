@@ -1,0 +1,414 @@
+/* ═══════════════════════════════════════════════════════════════
+   ayuda.css — Páginas del menú Ayuda Con la App
+   (Cómo reciclar, Cómo canjear, Roles y Modificar usuario)
+   Convención: BEM (Block__Element--Modifier)
+   ─────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────
+   HERO COMPARTIDO (hero azul con título, pasos y decoraciones)
+   ───────────────────────────────────────────────────────────────── */
+.ayuda-hero {
+  position: relative;
+  padding: 3.5rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.ayuda-hero--blue {
+  background: var(--simo-azul, #334E9D);
+}
+
+.ayuda-hero__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+.ayuda-hero__inner--roles {
+  align-items: center;
+}
+
+/* Columna izquierda */
+.ayuda-hero__content {
+  color: #fff;
+}
+
+.ayuda-hero__pre {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.ayuda-hero__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--simo-amarillo, #FFCD1C);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.ayuda-hero__title--yellow {
+  color: var(--simo-amarillo, #FFCD1C);
+}
+
+.ayuda-hero__title--roles {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+
+.ayuda-hero__desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1rem;
+  max-width: 400px;
+}
+
+.ayuda-hero__desc strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Columna derecha – lista de pasos */
+.ayuda-hero__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ayuda-hero__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.ayuda-hero__step-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--simo-amarillo, #FFCD1C);
+  line-height: 1;
+  min-width: 2rem;
+}
+
+.ayuda-hero__step-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.9);
+}
+
+.ayuda-hero__step-text strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ─── Decoraciones del hero ────────── */
+.ayuda-hero__decor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ayuda-hero__decor--flower-1 {
+  top: 0.5rem;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  opacity: 0.6;
+}
+
+.ayuda-hero__decor--diamond {
+  font-size: 3rem;
+  color: var(--simo-amarillo, #FFCD1C);
+  right: 3rem;
+  top: 2rem;
+  opacity: 0.8;
+}
+
+.ayuda-hero__decor--triangle-1 {
+  font-size: 1.4rem;
+  color: var(--simo-rosa, #DB0076);
+  right: 8rem;
+  bottom: 2rem;
+}
+
+.ayuda-hero__decor--triangle-2 {
+  font-size: 1rem;
+  color: var(--simo-amarillo, #FFCD1C);
+  right: 2rem;
+  bottom: 3rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PAR DE TELÉFONOS (Roles)
+   ───────────────────────────────────────────────────────────────── */
+.ayuda-hero__phones-pair {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SECCIÓN MOCKUPS (Reciclar y Canjear)
+   ───────────────────────────────────────────────────────────────── */
+.ayuda-mockups {
+  background: var(--simo-beige, #FFFCE7);
+  padding: 4rem 2rem;
+}
+
+.ayuda-mockups__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.ayuda-mockups__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ayuda-mockups__step-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--simo-azul, #334E9D);
+  line-height: 1;
+}
+
+.ayuda-mockups__caption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--simo-text-gray, #555);
+  text-align: center;
+  max-width: 180px;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   MOCKUP TELÉFONO
+   ───────────────────────────────────────────────────────────────── */
+.ayuda-phone {
+  width: 130px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  border: 2px solid #e8e8e8;
+  overflow: hidden;
+  position: relative;
+}
+
+.ayuda-phone__screen {
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+}
+
+.ayuda-phone__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  background: var(--simo-rosa, #DB0076);
+}
+
+.ayuda-phone__logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+
+.ayuda-phone__body {
+  flex: 1;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.ayuda-phone__points-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin-bottom: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+
+.ayuda-phone__bottombar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 4px;
+  border-top: 1px solid #eee;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SECCIÓN "ROLES" (steps) en hero
+   ───────────────────────────────────────────────────────────────── */
+.ayuda-roles__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.ayuda-roles__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ayuda-roles__step-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--simo-amarillo, #FFCD1C);
+  line-height: 1;
+  min-width: 1.8rem;
+}
+
+.ayuda-roles__step-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.9);
+}
+
+.ayuda-roles__step-text strong {
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SECCIÓN "MODIFICAR USUARIO"
+   ───────────────────────────────────────────────────────────────── */
+.ayuda-modificar {
+  background: var(--simo-beige, #FFFCE7);
+  padding: 4rem 2rem;
+}
+
+.ayuda-modificar__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.ayuda-modificar__phones {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.ayuda-modificar__content {
+  color: var(--simo-text-dark, #1a1a1a);
+}
+
+.ayuda-modificar__pre {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--simo-text-dark, #1a1a1a);
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.ayuda-modificar__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--simo-azul, #334E9D);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.ayuda-modificar__desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--simo-text-gray, #555);
+  margin-bottom: 1.5rem;
+}
+
+.ayuda-modificar__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ayuda-modificar__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ayuda-modificar__step-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--simo-azul, #334E9D);
+  line-height: 1;
+  min-width: 1.6rem;
+}
+
+.ayuda-modificar__step-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--simo-text-gray, #555);
+}
+
+.ayuda-modificar__step-text strong {
+  color: var(--simo-text-dark, #1a1a1a);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .ayuda-hero__inner,
+  .ayuda-modificar__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ayuda-hero__title { font-size: 2.8rem; }
+  .ayuda-hero__title--roles { font-size: 2.5rem; }
+
+  .ayuda-mockups__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ayuda-hero__phones-pair,
+  .ayuda-modificar__phones {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ayuda-mockups__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
