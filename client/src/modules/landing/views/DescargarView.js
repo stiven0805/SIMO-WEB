@@ -10,7 +10,10 @@
 
 import { BaseView } from '../../../core/BaseView.js'
 import { DescargarViewModel } from '../viewmodels/DescargarViewModel.js'
-import { renderNav, renderFooter, bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
+import { bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
+import { PublicNav, SharedFooter } from '../../../shared/components/Layouts.js'
+import { StepCard } from '../../../shared/components/Cards.js'
+import { IconFlower } from '../../../shared/components/Icons.js'
 
 export class DescargarView extends BaseView {
   constructor(options = {}) {
@@ -28,7 +31,7 @@ export class DescargarView extends BaseView {
     return `
       <div class="landing">
 
-        ${renderNav('descargar')}
+        ${PublicNav('descargar')}
 
         <!-- ─── DESCARGAR HERO ─────────────────────────────────── -->
         <section class="download-hero">
@@ -93,7 +96,11 @@ export class DescargarView extends BaseView {
                   </div>
                 </div>
               </div>
-              ${this._renderDecorations()}
+              <div class="download-hero__decor">
+                <div class="download-hero__decor-circle download-hero__decor-circle--1"></div>
+                <div class="download-hero__decor-circle download-hero__decor-circle--2"></div>
+                ${IconFlower('#FFCD1C', '#DB0076', 100)}
+              </div>
             </div>
           </div>
         </section>
@@ -103,50 +110,15 @@ export class DescargarView extends BaseView {
           <div class="download-steps__inner">
             <h2 class="download-steps__title">¿Cómo <span>empezar</span>?</h2>
             <div class="download-steps__grid">
-              <div class="download-steps__card">
-                <div class="download-steps__card-number">1</div>
-                <h3 class="download-steps__card-title">Descarga la app</h3>
-                <p class="download-steps__card-desc">Descarga SIMÖ desde Google Play o App Store completamente gratis.</p>
-              </div>
-              <div class="download-steps__card">
-                <div class="download-steps__card-number">2</div>
-                <h3 class="download-steps__card-title">Regístrate</h3>
-                <p class="download-steps__card-desc">Crea tu cuenta en pocos segundos con tu correo electrónico.</p>
-              </div>
-              <div class="download-steps__card">
-                <div class="download-steps__card-number">3</div>
-                <h3 class="download-steps__card-title">Empieza a reciclar</h3>
-                <p class="download-steps__card-desc">Registra tus dispositivos, ubica puntos de recolección y gana recompensas.</p>
-              </div>
+              ${StepCard({ number: 1, title: 'Descarga la app', desc: 'Descarga SIMÖ desde Google Play o App Store completamente gratis.' })}
+              ${StepCard({ number: 2, title: 'Regístrate', desc: 'Crea tu cuenta en pocos segundos con tu correo electrónico.' })}
+              ${StepCard({ number: 3, title: 'Empieza a reciclar', desc: 'Registra tus dispositivos, ubica puntos de recolección y gana recompensas.' })}
             </div>
           </div>
         </section>
 
-        ${renderFooter()}
+        ${SharedFooter()}
 
-      </div>
-    `
-  }
-
-  // ─── Helpers de renderizado ────────────────────────────────────────────────
-
-  /**
-   * Renderiza las decoraciones visuales alrededor del teléfono.
-   * @returns {string}
-   */
-  _renderDecorations() {
-    return `
-      <div class="download-hero__decor">
-        <div class="download-hero__decor-circle download-hero__decor-circle--1"></div>
-        <div class="download-hero__decor-circle download-hero__decor-circle--2"></div>
-        <svg class="download-hero__decor-flower" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <rect x="38" y="5" width="24" height="90" rx="2" fill="#FFCD1C"/>
-          <rect x="5" y="38" width="90" height="24" rx="2" fill="#FFCD1C"/>
-          <rect x="18" y="18" width="24" height="64" rx="2" fill="#FFCD1C" transform="rotate(45 50 50)"/>
-          <rect x="18" y="18" width="64" height="24" rx="2" fill="#FFCD1C" transform="rotate(45 50 50)"/>
-          <circle cx="50" cy="50" r="18" fill="#FFCD1C"/>
-          <circle cx="50" cy="50" r="13" fill="#DB0076"/>
-        </svg>
       </div>
     `
   }

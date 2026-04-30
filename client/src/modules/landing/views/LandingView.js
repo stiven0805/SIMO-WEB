@@ -10,7 +10,10 @@
 
 import { BaseView } from '../../../core/BaseView.js'
 import { LandingViewModel } from '../viewmodels/LandingViewModel.js'
-import { renderNav, renderFooter, bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
+import { bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
+import { PublicNav, SharedFooter } from '../../../shared/components/Layouts.js'
+import { OfferCard } from '../../../shared/components/Cards.js'
+import { IconHeroFlower } from '../../../shared/components/Icons.js'
 
 export class LandingView extends BaseView {
   constructor(options = {}) {
@@ -28,11 +31,18 @@ export class LandingView extends BaseView {
     return `
       <div class="landing">
 
-        ${renderNav('home')}
+        ${PublicNav('home')}
 
         <!-- ─── HERO ────────────────────────────────────────────── -->
         <section class="landing-hero" id="hero">
-          ${this._renderHeroDecorations()}
+          <div class="landing-hero__flower landing-hero__flower--big">${IconHeroFlower(120)}</div>
+          <div class="landing-hero__flower landing-hero__flower--small">${IconHeroFlower(80)}</div>
+          <div class="landing-hero__circle landing-hero__circle--blue"></div>
+          <div class="landing-hero__circle landing-hero__circle--yellow-ring"></div>
+          <div class="landing-hero__triangle landing-hero__triangle--yellow-1"></div>
+          <div class="landing-hero__triangle landing-hero__triangle--yellow-2"></div>
+          <div class="landing-hero__dot landing-hero__dot--1"></div>
+          <div class="landing-hero__dot landing-hero__dot--2"></div>
 
           <div class="landing-hero__inner">
             <div class="landing-hero__robot">
@@ -112,7 +122,7 @@ export class LandingView extends BaseView {
             <div class="landing-offers__grid-wrapper">
               <h3 class="landing-offers__grid-title">¡Recicladores buscan tus electrodomésticos!</h3>
               <div class="landing-offers__grid" id="offers-grid">
-                ${this._renderOfferCards()}
+                ${(this._viewModel.getState('offers') || []).map(offer => OfferCard(offer)).join('')}
               </div>
               <p class="landing-offers__date">Próximamente · <span>18 de julio de 2026</span></p>
             </div>
@@ -137,62 +147,12 @@ export class LandingView extends BaseView {
           </div>
         </section>
 
-        ${renderFooter()}
+        ${SharedFooter()}
 
       </div>
     `
   }
 
-  // ─── Helpers de renderizado ────────────────────────────────────────────────
-
-  /**
-   * Renderiza las decoraciones geométricas del hero.
-   * @returns {string}
-   */
-  _renderHeroDecorations() {
-    const flowerSvg = `
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <rect x="45" y="5" width="30" height="110" rx="2" fill="#FFCD1C"/>
-        <rect x="5" y="45" width="110" height="30" rx="2" fill="#FFCD1C"/>
-        <rect x="21" y="21" width="30" height="78" rx="2" fill="#FFCD1C" transform="rotate(45 60 60)"/>
-        <rect x="21" y="21" width="78" height="30" rx="2" fill="#FFCD1C" transform="rotate(45 60 60)"/>
-        <circle cx="60" cy="60" r="22" fill="#FFCD1C"/>
-        <circle cx="60" cy="60" r="17" fill="#334E9D"/>
-      </svg>
-    `
-    return `
-      <div class="landing-hero__flower landing-hero__flower--big">${flowerSvg}</div>
-      <div class="landing-hero__flower landing-hero__flower--small">${flowerSvg}</div>
-      <div class="landing-hero__circle landing-hero__circle--blue"></div>
-      <div class="landing-hero__circle landing-hero__circle--yellow-ring"></div>
-      <div class="landing-hero__triangle landing-hero__triangle--yellow-1"></div>
-      <div class="landing-hero__triangle landing-hero__triangle--yellow-2"></div>
-      <div class="landing-hero__dot landing-hero__dot--1"></div>
-      <div class="landing-hero__dot landing-hero__dot--2"></div>
-    `
-  }
-
-  /**
-   * Renderiza las tarjetas de ofertas con datos del ViewModel.
-   * @returns {string}
-   */
-  _renderOfferCards() {
-    const offers = this._viewModel.getState('offers') || []
-    return offers.map(offer => `
-      <div class="offer-card">
-        <div class="offer-card__icon-wrapper">
-          <span class="offer-card__badge">${offer.quantity}</span>
-          <span class="offer-card__icon">${offer.icon}</span>
-        </div>
-        <div class="offer-card__points">
-          <span class="offer-card__points-icon">🪙</span>
-          ${offer.points}
-        </div>
-        <p class="offer-card__name">${offer.name}</p>
-        <p class="offer-card__dest">Destino: ${offer.destination}</p>
-      </div>
-    `).join('')
-  }
 
   /**
    * Renderiza los logos de colaboradores para el carrusel.

@@ -114,10 +114,11 @@ if (authStore.isAuthenticated) {
 
 // ─── Eventos globales de navegación ──────────────────────────────────────
 
-eventBus.on('auth:loginSuccess', ({ user } = {}) => {
+eventBus.on('auth:loginSuccess', ({ user, token } = {}) => {
   // Persiste el usuario en el authStore para que los ViewModels autenticados lo lean
-  if (user) {
-    authStore.setSession({ token: 'demo-token', user })
+  if (user && token) {
+    authStore.setSession({ token, user })
+    httpClient.setAuthToken(token)
   }
   closeModal()
   navigateTo(PerfilView)

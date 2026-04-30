@@ -12,8 +12,12 @@ export class UserModel extends BaseModel {
     return {
       id: null,
       email: '',
-      name: '',
-      role: 'guest',
+      nombre: '',
+      rol: 'reciclador',
+      cedula: '',
+      telefono: '',
+      direccion: '',
+      puntos_verdes: 0,
       isAuthenticated: false,
       createdAt: null,
     }
@@ -26,7 +30,7 @@ export class UserModel extends BaseModel {
       errors.push('El email no es válido.')
     }
 
-    if (!this.get('name') || this.get('name').trim().length < 2) {
+    if (!this.get('nombre') || this.get('nombre').trim().length < 2) {
       errors.push('El nombre debe tener al menos 2 caracteres.')
     }
 
@@ -39,11 +43,11 @@ export class UserModel extends BaseModel {
   // ─── Computed properties ──────────────────────────────────────────────────
 
   get fullInfo() {
-    return `${this.get('name')} <${this.get('email')}>`
+    return `${this.get('nombre')} <${this.get('email')}>`
   }
 
   get isAdmin() {
-    return this.get('role') === 'admin'
+    return this.get('rol') === 'admin'
   }
 
   // ─── Helpers privados ─────────────────────────────────────────────────────

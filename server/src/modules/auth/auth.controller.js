@@ -2,56 +2,55 @@
  * auth.controller.js
  * -------------------
  * Controlador del módulo de autenticación.
- * Parsea requests, delega al AuthService, formatea respuestas.
  */
 
-import { BaseController } from '../../core/BaseController.js'
-import { AuthService } from './auth.service.js'
+import { BaseController } from '../../core/BaseController.js';
+import { AuthService } from './auth.service.js';
 
-const authService = new AuthService()
+const authService = new AuthService();
 
 export class AuthController extends BaseController {
   /**
-   * POST /auth/login
+   * POST /api/auth/login
    */
   async login(req, res) {
-    const { valid, missing } = this.validateRequired(req.body, ['email', 'password'])
+    const { valid, missing } = this.validateRequired(req.body, ['nombre', 'password']);
     if (!valid) {
-      return this.badRequest(res, `Campos requeridos faltantes: ${missing.join(', ')}`)
+      return this.badRequest(res, `Campos requeridos faltantes: ${missing.join(', ')}`);
     }
 
     try {
-      const result = await authService.login(req.body)
-      return this.ok(res, result, 'Login exitoso.')
+      const result = await authService.login(req.body);
+      return this.ok(res, result, 'Login exitoso.');
     } catch (error) {
-      if (error.statusCode === 401) return this.unauthorized(res, error.message)
-      return this.serverError(res, error)
+      if (error.statusCode === 401) return this.unauthorized(res, error.message);
+      return this.serverError(res, error);
     }
   }
 
   /**
-   * POST /auth/register
+   * POST /api/auth/register
    */
   async register(req, res) {
-    const { valid, missing } = this.validateRequired(req.body, ['name', 'email', 'password'])
+    const { valid, missing } = this.validateRequired(req.body, ['nombre', 'email', 'password', 'cedula']);
     if (!valid) {
-      return this.badRequest(res, `Campos requeridos faltantes: ${missing.join(', ')}`)
+      return this.badRequest(res, `Campos requeridos faltantes: ${missing.join(', ')}`);
     }
 
     try {
-      const result = await authService.register(req.body)
-      return this.created(res, result)
+      const result = await authService.register(req.body);
+      return this.created(res, result);
     } catch (error) {
-      if (error.statusCode === 400) return this.badRequest(res, error.message)
-      return this.serverError(res, error)
+      if (error.statusCode === 409 || error.statusCode === 400) return this.badRequest(res, error.message);
+      return this.serverError(res, error);
     }
   }
 
   /**
-   * POST /auth/logout
+   * POST /api/auth/logout
    */
   async logout(req, res) {
-    // TODO: Invalidar token en lista negra si se usa JWT
-    return this.noContent(res)
+    // Para JWT normal en localStorage, el cliente simplemente borra el token.
+    return this.noContent(res);
   }
 }

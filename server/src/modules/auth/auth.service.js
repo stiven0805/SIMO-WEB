@@ -4,115 +4,93 @@
  * Lógica de negocio del módulo de autenticación.
  */
 
-import { BaseService } from '../../core/BaseService.js'
-
-// ⚠️  USUARIOS DE PRUEBA — eliminar cuando se conecte la base de datos real
-const DUMMY_USERS = [
-  {
-    id: '1',
-    name: 'Admin',
-    email: 'admin@test.com',
-    passwordHash: 'admin123',
-    role: 'admin',
-    createdAt: '2026-01-01T00:00:00.000Z',
-  },
-  {
-    id: '2',
-    name: 'Diego',
-    email: 'diego@test.com',
-    passwordHash: 'diego123',
-    role: 'user',
-    createdAt: '2026-01-01T00:00:00.000Z',
-  },
-]
+import { BaseService } from '../../core/BaseService.js';
+import { pool } from '../../config/db.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export class AuthService extends BaseService {
   /**
    * Autentica a un usuario con sus credenciales.
-   * @param {{ email: string, password: string }} credentials
+   * @param {{ nombre: string, password: string }} credentials
    * @returns {Promise<{ user: object, token: string }>}
    */
   async login(credentials) {
-    const { email, password } = credentials
+    const { nombre, password } = credentials;
 
-    // TODO: Reemplazar con consulta real a la base de datos
-    const user = await this._findUserByEmail(email)
+    const resultado = await pool.query('SELECT * FROM usuario WHERE nombre = $1 OR email = $1', [nombre]);
 
-    if (!user) {
-      this.throwUnauthorized('Credenciales incorrectas.')
+    if (resultado.rows.length === 0) {
+      this.throwUnauthorized('Credenciales incorrectas.');
     }
 
-    const isValid = await this._verifyPassword(password, user.passwordHash)
-    if (!isValid) {
-      this.throwUnauthorized('Credenciales incorrectas.')
+    const user = resultado.rows[0];
+    const passwordValido = await bcrypt.compare(password, user.password);
+
+    if (!passwordValido) {
+      this.throwUnauthorized('Credenciales incorrectas.');
     }
 
-    const token = this._generateToken(user)
+    const token = this._generateToken(user);
 
     return {
       user: this._sanitizeUser(user),
       token,
-    }
+    };
   }
 
   /**
    * Registra un nuevo usuario.
-   * @param {{ name: string, email: string, password: string }} userData
+   * @param {{ nombre: string, email: string, password: string, cedula: string, telefono: string, direccion: string }} userData
    * @returns {Promise<{ user: object, token: string }>}
    */
   async register(userData) {
-    const { name, email, password } = userData
+    const { nombre, email, password, cedula, telefono, direccion } = userData;
 
-    const existing = await this._findUserByEmail(email)
-    if (existing) {
-      this.throwError('Ya existe una cuenta con ese email.')
+    // Verificar si el email o el nombre ya existen
+    const existe = await pool.query(
+      'SELECT id, email FROM usuario WHERE email = $1 OR nombre = $2',
+      [email, nombre]
+    );
+
+    if (existe.rows.length > 0) {
+      const u = existe.rows[0];
+      if (u.email === email) {
+        this.throwError('El email ya está registrado.', 409);
+      }
+      this.throwError('El nombre de usuario ya está registrado.', 409);
     }
 
-    // TODO: Implementar hash de contraseña con bcrypt
-    const newUser = {
-      id: Date.now().toString(),
-      name,
-      email,
-      role: 'user',
-      createdAt: new Date().toISOString(),
-    }
+    const hash = await bcrypt.hash(password, 10);
 
-    const token = this._generateToken(newUser)
+    const resultado = await pool.query(
+      `INSERT INTO usuario (nombre, email, password, cedula, telefono, direccion, rol)
+       VALUES ($1, $2, $3, $4, $5, $6, 'reciclador')
+       RETURNING id, nombre, email, cedula, telefono, direccion, puntos_verdes, rol, created_at`,
+      [nombre, email, hash, cedula, telefono || null, direccion || null]
+    );
+
+    const newUser = resultado.rows[0];
+    const token = this._generateToken(newUser);
 
     return {
       user: this._sanitizeUser(newUser),
       token,
-    }
+    };
   }
 
   // ─── Métodos privados ─────────────────────────────────────────────────────
-
-  /**
-   * @param {string} email
-   * @returns {Promise<object|null>}
-   */
-  async _findUserByEmail(email) {
-    // ⚠️  STUB TEMPORAL — reemplazar con consulta real a la DB
-    return DUMMY_USERS.find(u => u.email === email) || null
-  }
-
-  /**
-   * @param {string} password
-   * @param {string} hash
-   * @returns {Promise<boolean>}
-   */
-  async _verifyPassword(password, hash) {
-    // ⚠️  STUB TEMPORAL — reemplazar con bcrypt.compare(password, hash)
-    return password === hash
-  }
 
   /**
    * @param {object} user
    * @returns {string}
    */
   _generateToken(user) {
-    // TODO: Implementar con jsonwebtoken
-    return `mock-token-${user.id}`
+    return jwt.sign(
+      { id: user.id, email: user.email, rol: user.rol },
+      process.env.JWT_SECRET || 'super-secret-key-for-dev',
+      { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
+    );
   }
 
   /**
@@ -121,7 +99,7 @@ export class AuthService extends BaseService {
    * @returns {object}
    */
   _sanitizeUser(user) {
-    const { passwordHash, ...safeUser } = user
-    return safeUser
+    const { password, ...safeUser } = user;
+    return safeUser;
   }
 }

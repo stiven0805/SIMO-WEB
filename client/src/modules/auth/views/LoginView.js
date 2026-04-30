@@ -29,16 +29,16 @@ export class LoginView extends BaseView {
 
           <form id="login-form" class="auth-modal__form" novalidate>
             <div class="auth-modal__form-group">
-              <label class="auth-modal__label" for="email">Correo electrónico</label>
+              <label class="auth-modal__label" for="nombre">Nombre de usuario</label>
               <input
                 class="auth-modal__input"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Correo"
-                autocomplete="email"
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre de usuario"
+                autocomplete="username"
               />
-              <span class="form-error" id="email-error"></span>
+              <span class="form-error" id="nombre-error"></span>
             </div>
 
             <div class="auth-modal__form-group">
@@ -116,8 +116,8 @@ export class LoginView extends BaseView {
     })
 
     // Actualizar campos
-    this._addEvent('#email', 'input', e => {
-      this._viewModel.updateField('email', e.target.value)
+    this._addEvent('#nombre', 'input', e => {
+      this._viewModel.updateField('nombre', e.target.value)
     })
 
     this._addEvent('#password', 'input', e => {

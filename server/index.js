@@ -10,6 +10,9 @@ import cors from 'cors'
 import { config } from './src/config/index.js'
 import { errorHandler } from './src/middleware/errorHandler.js'
 import authRoutes from './src/modules/auth/auth.routes.js'
+import userRoutes from './src/modules/user/user.routes.js'
+import historyRoutes from './src/modules/history/history.routes.js'
+import notificationsRoutes from './src/modules/notifications/notifications.routes.js'
 
 const app = express()
 
@@ -25,10 +28,11 @@ app.use(express.urlencoded({ extended: true }))
 
 // ─── Rutas de módulos ──────────────────────────────────────────────────────
 
-app.use('/auth', authRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/history', historyRoutes)
+app.use('/api/notifications', notificationsRoutes)
 // app.use('/dashboard', dashboardRoutes)
-// app.use('/users', userRoutes)
-// Agregar rutas de nuevos módulos aquí
 
 // ─── Manejador de errores (siempre al final) ───────────────────────────────
 

@@ -10,7 +10,9 @@
 
 import { BaseView } from '../../../core/BaseView.js'
 import { ColaboracionesViewModel } from '../viewmodels/ColaboracionesViewModel.js'
-import { renderNav, renderFooter, bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
+import { bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
+import { PublicNav, SharedFooter, ColabsHeroDecos } from '../../../shared/components/Layouts.js'
+import { ColabLogo } from '../../../shared/components/Cards.js'
 
 export class ColaboracionesView extends BaseView {
   constructor(options = {}) {
@@ -26,11 +28,11 @@ export class ColaboracionesView extends BaseView {
     return `
       <div class="landing">
 
-        ${renderNav('colaboraciones')}
+        ${PublicNav('colaboraciones')}
 
         <!-- ─── HERO ──────────────────────────────────────────── -->
         <section class="colabs-hero">
-          ${this._renderHeroDecos()}
+          ${ColabsHeroDecos()}
           <div class="colabs-hero__inner">
             <p class="colabs-hero__logo-text">SIMÖ</p>
             <h1 class="colabs-hero__title">Colaboradores SIMÖ</h1>
@@ -53,15 +55,15 @@ export class ColaboracionesView extends BaseView {
                 una cultura más responsable con la tecnología y el medio ambiente.
               </p>
               <div class="colabs-card__grid">
-                ${this._renderLogoHM()}
-                ${this._renderLogoKoaj()}
-                ${this._renderLogoVerdeo()}
-                ${this._renderLogoFalabella()}
-                ${this._renderLogoAlkatronic()}
-                ${this._renderLogoBettys()}
-                ${this._renderLogoPuntos()}
-                ${this._renderLogoJumbo()}
-                ${this._renderLogoElo()}
+                ${ColabLogo({ name: 'H&M', type: 'hm' })}
+                ${ColabLogo({ name: 'KOAJ', type: 'koaj' })}
+                ${ColabLogo({ name: 'verdeo', type: 'verdeo' })}
+                ${ColabLogo({ name: 'falabella.', type: 'falabella' })}
+                ${ColabLogo({ name: '⬛ Alkatronic<br><small>professional</small>', type: 'alkatronic' })}
+                ${ColabLogo({ name: "Betty's<br>bowls", type: 'bettys' })}
+                ${ColabLogo({ name: 'Ⓟ Puntos<br>Colombia', type: 'puntos' })}
+                ${ColabLogo({ name: 'JUMBO', type: 'jumbo' })}
+                ${ColabLogo({ name: '∼elo∼', type: 'elo' })}
               </div>
             </div>
           </div>
@@ -79,105 +81,24 @@ export class ColaboracionesView extends BaseView {
                 ambiental de los residuos tecnológicos.
               </p>
               <div class="colabs-card__grid">
-                ${this._renderLogoRaee()}
-                ${this._renderLogoRedVerde()}
-                ${this._renderLogoEcoComputo()}
-                ${this._renderLogoResiter()}
-                ${this._renderLogoRecopila()}
-                ${this._renderLogoFullCircle()}
-                ${this._renderLogoReco()}
-                ${this._renderLogoVeolia()}
-                ${this._renderLogoEcorecyclar()}
+                ${ColabLogo({ name: '⚙ RAEE', type: 'raee' })}
+                ${ColabLogo({ name: 'RED VERDE', type: 'red-verde' })}
+                ${ColabLogo({ name: '♲ ECO<br>CÓMPUTO', type: 'eco-computo' })}
+                ${ColabLogo({ name: 'RESITER', type: 'resiter' })}
+                ${ColabLogo({ name: 'recopila', type: 'recopila' })}
+                ${ColabLogo({ name: '⏻ Full Circle<br>ELECTRONICS', type: 'full-circle' })}
+                ${ColabLogo({ name: '🌿 RECO', type: 'reco' })}
+                ${ColabLogo({ name: '⊙ VEOLIA', type: 'veolia' })}
+                ${ColabLogo({ name: 'ecorecyclar', type: 'ecorecyclar' })}
               </div>
             </div>
           </div>
         </section>
 
-        ${renderFooter()}
+        ${SharedFooter()}
 
       </div>
     `
-  }
-
-  // ─── Decoraciones Hero ──────────────────────────────────────────────────
-
-  /**
-   * Renderiza las decoraciones del hero (líneas curvas blancas).
-   * @returns {string}
-   */
-  _renderHeroDecos() {
-    return `
-      <div class="colabs-hero__deco colabs-hero__deco--left">
-        <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-          <path d="M100 10 Q20 60 80 100 Q20 140 100 190" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="colabs-hero__deco colabs-hero__deco--right">
-        <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 10 Q100 60 40 100 Q100 140 20 190" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
-    `
-  }
-
-  // ─── Logos Empresas que Recompensan ────────────────────────────────────
-
-  _renderLogoHM() {
-    return `<div class="colabs-logo colabs-logo--hm"><span>H&amp;M</span></div>`
-  }
-  _renderLogoKoaj() {
-    return `<div class="colabs-logo colabs-logo--koaj"><span>KOAJ</span></div>`
-  }
-  _renderLogoVerdeo() {
-    return `<div class="colabs-logo colabs-logo--verdeo"><span>verdeo</span></div>`
-  }
-  _renderLogoFalabella() {
-    return `<div class="colabs-logo colabs-logo--falabella"><span>falabella.</span></div>`
-  }
-  _renderLogoAlkatronic() {
-    return `<div class="colabs-logo colabs-logo--alkatronic"><span>⬛ Alkatronic<br><small>professional</small></span></div>`
-  }
-  _renderLogoBettys() {
-    return `<div class="colabs-logo colabs-logo--bettys"><span>Betty's<br>bowls</span></div>`
-  }
-  _renderLogoPuntos() {
-    return `<div class="colabs-logo colabs-logo--puntos"><span>Ⓟ Puntos<br>Colombia</span></div>`
-  }
-  _renderLogoJumbo() {
-    return `<div class="colabs-logo colabs-logo--jumbo"><span>JUMBO</span></div>`
-  }
-  _renderLogoElo() {
-    return `<div class="colabs-logo colabs-logo--elo"><span>∼elo∼</span></div>`
-  }
-
-  // ─── Logos Empresas de Recolección ────────────────────────────────────
-
-  _renderLogoRaee() {
-    return `<div class="colabs-logo colabs-logo--raee"><span>⚙ RAEE</span></div>`
-  }
-  _renderLogoRedVerde() {
-    return `<div class="colabs-logo colabs-logo--red-verde"><span>RED VERDE</span></div>`
-  }
-  _renderLogoEcoComputo() {
-    return `<div class="colabs-logo colabs-logo--eco-computo"><span>♲ ECO<br>CÓMPUTO</span></div>`
-  }
-  _renderLogoResiter() {
-    return `<div class="colabs-logo colabs-logo--resiter"><span>RESITER</span></div>`
-  }
-  _renderLogoRecopila() {
-    return `<div class="colabs-logo colabs-logo--recopila"><span>recopila</span></div>`
-  }
-  _renderLogoFullCircle() {
-    return `<div class="colabs-logo colabs-logo--full-circle"><span>⏻ Full Circle<br>ELECTRONICS</span></div>`
-  }
-  _renderLogoReco() {
-    return `<div class="colabs-logo colabs-logo--reco"><span>🌿 RECO</span></div>`
-  }
-  _renderLogoVeolia() {
-    return `<div class="colabs-logo colabs-logo--veolia"><span>⊙ VEOLIA</span></div>`
-  }
-  _renderLogoEcorecyclar() {
-    return `<div class="colabs-logo colabs-logo--ecorecyclar"><span>ecorecyclar</span></div>`
   }
 
   // ─── Binding ──────────────────────────────────────────────────────────
