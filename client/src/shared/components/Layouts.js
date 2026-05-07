@@ -85,11 +85,12 @@ export const PublicNav = (activePage = 'home', theme = 'default') => {
 /**
  * Navegación Autenticada
  */
-export const AuthNav = (activePage = '') => {
+export const AuthNav = (activePage = '', theme = 'default') => {
+  const themeClass = theme === 'blue' ? 'landing-header--blue' : '';
   const activeClass = (page) => page === activePage ? 'landing-nav__link--active' : '';
 
   return `
-    <div class="landing-header">
+    <div class="landing-header ${themeClass}">
       <div class="landing-topstrip"></div>
       <header class="landing-nav">
         <div class="landing-nav__inner">

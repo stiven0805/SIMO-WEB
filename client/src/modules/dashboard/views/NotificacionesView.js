@@ -26,11 +26,12 @@ export class NotificacionesView extends BaseView {
    */
   render() {
     const items = this._viewModel.getState('items') || []
+    const selectedItem = this._viewModel.getState('selectedItem')
 
     return `
       <div class="landing">
 
-        ${AuthNav('notificaciones')}
+        ${AuthNav('notificaciones', 'blue')}
 
         <!-- ─── HERO ──────────────────────────────────────────── -->
         <section class="historial-hero">
@@ -42,10 +43,76 @@ export class NotificacionesView extends BaseView {
           </div>
         </section>
 
-        <!-- ─── ITEMS ─────────────────────────────────────────── -->
+        <!-- ─── CONTENIDO ─────────────────────────────────────── -->
         <section class="historial-items">
           <div class="historial-items__inner">
-            ${items.map(item => NotificacionCard(item)).join('')}
+            
+            ${selectedItem ? `
+              <!-- VISTA DETALLE -->
+              <div class="notif-detalle">
+                <button class="notif-detalle__back" id="btn-back-notif">← Volver a la lista</button>
+                
+                <div class="notif-detalle__grid">
+                  <!-- Columna 1: Dispositivo + Puntos -->
+                  <div class="notif-detalle__col-left">
+                    <div class="historial-card historial-card--${selectedItem.color}" style="margin-bottom: 2rem; width: 100%;">
+                      <div class="historial-card__device" style="min-width: 140px;">
+                        <span class="historial-card__qty">${selectedItem.quantity}</span>
+                        <div class="historial-card__img-container">
+                          <img src="./assets/styles/images/${selectedItem.img}.png" alt="${selectedItem.device}" class="historial-card__img" />
+                        </div>
+                        <span class="historial-card__label">${selectedItem.device}</span>
+                      </div>
+                    </div>
+
+                    <div class="notif-detalle__points-badge">
+                      <img src="./assets/styles/images/flor.png" alt="Puntos" class="notif-detalle__flower" />
+                      <span>${selectedItem.points}</span>
+                    </div>
+                  </div>
+
+                  <!-- Columna 2: Info central -->
+                  <div class="notif-detalle__col-center">
+                    <div class="notif-detalle__info-block">
+                      <p><strong>Destino:</strong> ${selectedItem.destination}</p>
+                      <p>${selectedItem.address}</p>
+                      <p><strong>Cantidad:</strong> ${selectedItem.quantity}</p>
+                      <p><strong>Forma de entrega:</strong></p>
+                      <p class="notif-detalle__delivery">${selectedItem.delivery}</p>
+                    </div>
+
+                    <button class="notif-detalle__status-btn notif-detalle__status-btn--${selectedItem.statusColor}">
+                      ${selectedItem.status}
+                    </button>
+                  </div>
+
+                  <!-- Columna 3: Card de código -->
+                  <div class="notif-detalle__col-right">
+                    <div class="notif-detalle__code-card">
+                      <h3 class="notif-detalle__code-title">¡Solicitud aceptada!</h3>
+                      <p class="notif-detalle__code-val">CODE: ${selectedItem.code}</p>
+                      <p class="notif-detalle__code-date">10 / marzo / 2026 - ${selectedItem.nit}</p>
+                      
+                      <div class="notif-detalle__code-list">
+                        <p><strong>Dispositivo:</strong> ${selectedItem.device}</p>
+                        <p><strong>Fecha de entrega:</strong> ${selectedItem.date}</p>
+                        <p><strong>Puntos ganados:</strong> ${selectedItem.points} Puntos</p>
+                      </div>
+
+                      <p class="notif-detalle__code-note">
+                        NOTA: Los puntos se otorgarán cuando el dispositivo sea recibido en el punto de reciclaje
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ` : `
+              <!-- VISTA LISTA -->
+              <div id="notif-list">
+                ${items.map(item => NotificacionCard(item)).join('')}
+              </div>
+            `}
+
           </div>
         </section>
 
@@ -58,11 +125,34 @@ export class NotificacionesView extends BaseView {
   // ─── Binding ──────────────────────────────────────────────────────────────
 
   /** @override */
-  _bindViewModel() {}
+  _bindViewModel() {
+    this._subscribe('selectedItem', () => {
+      this.refresh()
+    })
+  }
 
   /** @override */
   _bindEvents() {
     bindAuthNavEvents(this)
     bindFooterEvents(this)
+
+    // Eventos de selección de card
+    const list = this.$('#notif-list')
+    if (list) {
+      list.querySelectorAll('.notif-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = parseInt(card.id.split('-')[1])
+          this._viewModel.selectItem(id)
+        })
+      })
+    }
+
+    // Evento volver
+    const btnBack = this.$('#btn-back-notif')
+    if (btnBack) {
+      btnBack.addEventListener('click', () => {
+        this._viewModel.clearSelection()
+      })
+    }
   }
 }

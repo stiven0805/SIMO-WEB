@@ -64,6 +64,22 @@ export class BaseView {
   }
 
   /**
+   * Refresca la View re-renderizando el HTML y re-enlazando eventos.
+   * No vuelve a ejecutar _bindViewModel para evitar suscripciones duplicadas.
+   */
+  refresh() {
+    if (!this._container || !this._isMounted) return
+    
+    // Guardar posición de scroll si es necesario
+    const scrollPos = window.scrollY
+
+    this._container.innerHTML = this.render()
+    this._bindEvents()
+    
+    window.scrollTo(0, scrollPos)
+  }
+
+  /**
    * Desmonta la View: limpia eventos y suscripciones.
    */
   destroy() {

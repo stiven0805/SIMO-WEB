@@ -30,7 +30,7 @@ export class HistorialView extends BaseView {
     return `
       <div class="landing">
 
-        ${AuthNav('historial')}
+        ${AuthNav('historial', 'blue')}
 
         <!-- ─── HERO ──────────────────────────────────────────── -->
         <section class="historial-hero">

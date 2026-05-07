@@ -39,26 +39,42 @@ export class PerfilView extends BaseView {
             <div class="perfil-hero__left">
               <div id="perfil-display-mode">
                 <div class="perfil-info-list">
+                  
                   <div class="perfil-info-item">
-                    <span class="perfil-info-item__icon">👤</span>
+                    <div class="perfil-info-item__icon">
+                      <img src="./assets/styles/images/ic-user.png" alt="Usuario" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDExYTMgMyAwIDExIDAtNiAzIDMgMCAwMSAwIDZ6bTAgMmE5IDkgMCAwMC05IDloMThhOSA5IDAgMDAtOS05eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='">
+                    </div>
                     <span class="perfil-info-item__text" id="perfil-name">Usuario</span>
                   </div>
+
                   <div class="perfil-info-item">
-                    <span class="perfil-info-item__icon">🪪</span>
+                    <div class="perfil-info-item__icon">
+                      <img src="./assets/styles/images/ic-cedula.png" alt="Cédula" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIgNWg0djE0SDJ6bTYgMGgxNHYySjh6bTAgNGgxNHYyaC0xNHptMCA0aDE0djJoLTE0em0wIDRoOHYyaC04eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='">
+                    </div>
                     <span class="perfil-info-item__text" id="perfil-cedula">--</span>
                   </div>
+
                   <div class="perfil-info-item">
-                    <span class="perfil-info-item__icon">📞</span>
+                    <div class="perfil-info-item__icon">
+                      <img src="./assets/styles/images/ic-telefono.png" alt="Teléfono" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTYuNjIgMTAuNzlhMTUuMDUgMTUuMDUgMCAwMDYuNTkgNi41OWwyLjItMi4yYTEgMSAwIDAxMS4xMS0uMjcgMTEuNTggMTEuNTggMCAwMDMuNjkgLjdtLjA5IDEtMSAxIDAgMDFhMSAxIDAgMDAtMSAxdi0zLjU5YTEgMSAwIDAxLjU5LS44OGwxLjEtMS4xYTEgMSAwIDAwLjI3LTEuMTEgMTEuNTggMTEuNTggMCAwMC0uNy0zLjY5IDEgMSAwIDAxLjI3LTEuMTFsMi4yLTIuMmExIDEgMCAwMTYuNTkgNi41OXoiIGZpbGw9IiMzMzMiLz48L3N2Zz4='">
+                    </div>
                     <span class="perfil-info-item__text" id="perfil-telefono">--</span>
                   </div>
+
                   <div class="perfil-info-item">
-                    <span class="perfil-info-item__icon">🏠</span>
+                    <div class="perfil-info-item__icon">
+                      <img src="./assets/styles/images/ic-direccion.png" alt="Dirección" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJDOC4xMyAyIDUgNS4xMyA1IDljMCA1LjI1IDcgMTMgNyAxM3M3LTcuNzUgNy0xM2MwLTMuODctMy4xMy03LTctN3ptMCA5LjVhMi41IDIuNSAwIDExIDAtNSAyLjUgMi41IDAgMDEgMCA1eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='">
+                    </div>
                     <span class="perfil-info-item__text" id="perfil-direccion">--</span>
                   </div>
+
                   <div class="perfil-info-item">
-                    <span class="perfil-info-item__icon">✉</span>
+                    <div class="perfil-info-item__icon">
+                      <img src="./assets/styles/images/ic-email.png" alt="Email" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIwIDRIYTRhMiAyIDAgMDAtMiAy djEybDAgMmE0IDQgMCAwMCA0IDRoMTZhMiAyIDAgMDAtMi0ydi0xMmwwLTJhMiAyIDAgMDAtMi0yek00IDZsOCA1IDgtNXYyek00IDE4VjhsOCA1IDgtNVYxOEg0eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='">
+                    </div>
                     <span class="perfil-info-item__text" id="perfil-email">--</span>
                   </div>
+
                 </div>
                 <button class="perfil-btn perfil-btn--edit" id="perfil-edit-btn">Editar información</button>
               </div>
@@ -87,31 +103,28 @@ export class PerfilView extends BaseView {
             </div>
 
             <!-- Columna derecha: Avatar + Puntos -->
-            <div class="perfil-hero__right" style="display: flex; flex-direction: column; align-items: flex-end;">
+            <div class="perfil-hero__right">
               
-              <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <!-- Botón de cerrar cuenta a la izquierda del avatar -->
-                <button class="perfil-btn perfil-btn--logout" id="perfil-logout-btn" style="margin: 0; white-space: nowrap;">Cerrar cuenta</button>
+              <div class="perfil-avatar-container">
+                <!-- Botón de cerrar cuenta -->
+                <button class="perfil-btn perfil-btn--logout" id="perfil-logout-btn">Cerrar cuenta</button>
                 
                 <!-- Avatar -->
-                <div class="perfil-avatar-block" style="flex-direction: column; align-items: center; gap: 0; margin: 0;">
-                  <div class="perfil-avatar" style="width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--simo-amarillo, #FFCD1C); background: #FFFCE7; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: flex-end;">
-                    <!-- Imagen base del avatar -->
-                    <img src="./assets/images/usuario.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSIyMCIgZmlsbD0iI0Y1QzE2QyIvPjxwYXRoIGQ9Ik0yMCAxMDBjMC0zMCAxMC00MCAzMC00MHMzMCAxMCAzMCA0MHoiIGZpbGw9IiM2QzM4RkYiLz48cmVjdCB4PSIyMCIgeT0iNzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI0ZGQ0QxQyIvPjwvc3ZnPg=='">
-                    <!-- Texto sobre el cartel amarillo -->
-                    <div id="perfil-avatar-name" style="position: absolute; bottom: 15px; text-align: center; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #1a1a1a; line-height: 1.1; width: 60px;">
-                      --
-                    </div>
+                <div class="perfil-avatar">
+                  <img src="./assets/styles/images/usuario.png" alt="Avatar" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSIyMCIgZmlsbD0iI0Y1QzE2QyIvPjxwYXRoIGQ9Ik0yMCAxMDBjMC0zMCAxMC00MCAzMC00MHMzMCAxMCAzMCA0MHoiIGZpbGw9IiM2QzM4RkYiLz48cmVjdCB4PSIyMCIgeT0iNzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI0ZGQ0QxQyIvPjwvc3ZnPg=='">
+                  <!-- Tag con el nombre -->
+                  <div class="perfil-avatar__name-tag" id="perfil-avatar-name">
+                    Usuario
                   </div>
                 </div>
               </div>
 
               <!-- Puntos -->
-              <div class="perfil-points-badge" style="margin-top: 1.5rem; width: 220px; justify-content: space-between; padding: 1rem 1.5rem;">
-                <div class="perfil-points-badge__flower" style="width: 60px; height: 60px;">
-                  <img src="./assets/images/flor.png" alt="Flor" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAgMGwyMCAyMC0yMCAyMC0yMC0yMHoiIGZpbGw9IiNGRkNEOEYiLz48cGF0aCBkPSJNMTAwIDUwbC0yMCAyMC0yMC0yMDIwLTIweiIgZmlsbD0iI0ZGQ0Q4RiIvPjxwYXRoIGQ9Ik01MCAxMDBMNzAgODBsLTIwLTIwLTIwIDIweiIgZmlsbD0iI0ZGQ0Q4RiIvPjxwYXRoIGQ9Ik0wIDUwbDIwLTIwIDIwIDIwLTIwIDIweiIgZmlsbD0iI0ZGQ0Q4RiIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjE4IiBmaWxsPSIjREIwMDc2IiBzdHJva2U9IiNGRkNEOEYiIHN0cm9rZS13aWR0aD0iNCIvPjwvc3ZnPg=='">
+              <div class="perfil-points-badge">
+                <div class="perfil-points-badge__flower">
+                  <img src="./assets/styles/images/flor.png" alt="Flor" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
-                <span class="perfil-points-badge__num" id="perfil-points" style="font-size: 2.8rem; color: #334E9D;">1100</span>
+                <span class="perfil-points-badge__num" id="perfil-points">1100</span>
               </div>
             </div>
 
@@ -141,14 +154,7 @@ export class PerfilView extends BaseView {
                   <p class="perfil-impacto__thanks">¡Muchas gracias por ser parte del cambio!</p>
                 </div>
                 <div class="perfil-impacto__icon">
-                  <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-                    <path d="M40 8 C20 8 8 22 8 38 C8 54 20 68 40 72" stroke="#2E7D32" stroke-width="5" fill="none" stroke-linecap="round"/>
-                    <path d="M40 8 C60 8 72 22 72 38 C72 54 60 68 40 72" stroke="#2E7D32" stroke-width="5" fill="none" stroke-linecap="round"/>
-                    <path d="M30 20 L40 8 L50 20" fill="#2E7D32"/>
-                    <path d="M56 55 L40 72 L24 55" fill="#2E7D32"/>
-                    <path d="M8 38 L20 30 L20 46 Z" fill="#2E7D32"/>
-                    <path d="M72 38 L60 30 L60 46 Z" fill="#2E7D32"/>
-                  </svg>
+                  <img src="./assets/styles/images/reciclaje.png" alt="Reciclaje" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMzEgMjhMNTAgOEw2OSAyOE01MCA4djY0TDMxIDUybTM4IDBMMTUgNjhMMzEgNTJtMzggMEw4NSA2OEw2OSA1MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMkU3RDMyIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4='">
                 </div>
               </div>
             </div>

@@ -24,7 +24,9 @@ export const HistorialCard = (item) => `
   <div class="historial-card historial-card--${item.color}">
     <div class="historial-card__device">
       <span class="historial-card__qty">${item.quantity}</span>
-      <span class="historial-card__icon">${DeviceIcon(item.device)}</span>
+      <div class="historial-card__img-container">
+        <img src="./assets/styles/images/${item.img}.png" alt="${item.device}" class="historial-card__img" />
+      </div>
       <span class="historial-card__label">${item.device}</span>
     </div>
     <div class="historial-card__info">
@@ -39,26 +41,28 @@ export const HistorialCard = (item) => `
  * Tarjeta de Notificación (Usada en Notificaciones)
  */
 export const NotificacionCard = (item) => {
-  const flowerSvg = IconFlower('#FFCD1C', '#DB0076', 22);
-
   return `
-    <div class="notif-card" id="notif-${item.id}">
+    <div class="notif-card notif-card--${item.color}" id="notif-${item.id}">
       <div class="notif-card__device">
         <span class="notif-card__qty">${item.quantity}</span>
-        <span class="notif-card__icon">${DeviceIcon(item.device)}</span>
+        <div class="notif-card__img-container">
+          <img src="./assets/styles/images/${item.img}.png" alt="${item.device}" class="notif-card__img" />
+        </div>
         <span class="notif-card__label">${item.device}</span>
       </div>
       <div class="notif-card__info">
-        <p class="notif-card__row">Destino: <strong>${item.destination}</strong></p>
-        <p class="notif-card__row">Electrodoméstico: ${item.device}</p>
-        <p class="notif-card__row">Fecha: ${item.date}</p>
-      </div>
-      <div class="notif-card__right">
+        <div class="notif-card__details">
+          <p class="notif-card__row">Destino: <strong>${item.destination}</strong></p>
+          <p class="notif-card__row">Electrodoméstico: ${item.device}</p>
+          <p class="notif-card__row">Fecha: ${item.date}</p>
+        </div>
         <div class="notif-card__points">
-          ${flowerSvg}
+          <img src="./assets/styles/images/flor.png" alt="Puntos" class="notif-card__flower" />
           <span>${item.points}</span>
         </div>
-        <p class="notif-card__status notif-card__status--${item.statusColor}">Estado: <strong>${item.status}</strong></p>
+        <div class="notif-card__footer">
+          <p class="notif-card__status">Estado: <span class="notif-card__status-val--${item.statusColor}">${item.status}</span></p>
+        </div>
       </div>
     </div>
   `;
