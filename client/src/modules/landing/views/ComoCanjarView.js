@@ -33,7 +33,6 @@ export class ComoCanjarView extends BaseView {
 
         <!-- ─── HERO ──────────────────────────────────────────── -->
         <section class="ayuda-hero ayuda-hero--blue">
-          ${AyudaHeroDecorations(IconFlower('#FFCD1C', '#DB0076', 80))}
           <div class="ayuda-hero__inner">
             <div class="ayuda-hero__content">
               <p class="ayuda-hero__pre">Cómo</p>
@@ -62,14 +61,14 @@ export class ComoCanjarView extends BaseView {
         <section class="ayuda-mockups">
           <div class="ayuda-mockups__inner">
             ${[
-              { num: 1, label: 'Ingresa a la sección Recompensas o Canjear desde el menú principal.', color: '#FFCD1C' },
-              { num: 2, label: 'Visualiza las ofertas disponibles y revisa cuántos puntos necesitas.', color: '#FFCD1C' },
-              { num: 3, label: 'Elige el beneficio que deseas canjear.', color: '#DB0076' },
-              { num: 4, label: 'Confirma la acción y recibe tu cupón en tu correo electrónico.', color: '#DB0076' },
-            ].map(s => `
+        { num: 1, label: 'Ingresa a la sección <span style="color:#334E9D; font-weight:700;">Recompensas o Canjear</span> desde el menú principal.', img: 'celular rosa 1' },
+        { num: 2, label: '<span style="color:#334E9D; font-weight:700;">Visualiza las ofertas disponibles</span> y revisa cuántos puntos necesitas.', img: 'celular rosa 2' },
+        { num: 3, label: 'Elige el beneficio que <span style="color:#334E9D; font-weight:700;">deseas canjear.</span>', img: 'celular rosa 3' },
+        { num: 4, label: 'Confirma la acción y <span style="color:#334E9D; font-weight:700;">recibe tu cupón</span> en tu correo electrónico.', img: 'celular rosa 4' },
+      ].map(s => `
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num">${s.num}</span>
-                ${AyudaPhoneMockup(s.color)}
+                <img src="./assets/styles/images/${s.img}.png" class="ayuda-mockups__phone-img" alt="Paso ${s.num}" />
                 <p class="ayuda-mockups__caption">${s.label}</p>
               </div>
             `).join('')}

@@ -33,9 +33,6 @@ export class ComoReciclarView extends BaseView {
 
         <!-- ─── HERO ──────────────────────────────────────────── -->
         <section class="ayuda-hero ayuda-hero--blue">
-          ${AyudaHeroDecorations(IconFlower('#DB0076', '#FFCD1C', 80))}
-          <div class="ayuda-hero__decor ayuda-hero__decor--triangle-1">▲</div>
-          <div class="ayuda-hero__decor ayuda-hero__decor--triangle-2">▶</div>
           <div class="ayuda-hero__inner">
             <div class="ayuda-hero__content">
               <p class="ayuda-hero__pre">Cómo</p>
@@ -65,29 +62,14 @@ export class ComoReciclarView extends BaseView {
         <section class="ayuda-mockups">
           <div class="ayuda-mockups__inner">
             ${[
-        { num: 1, label: 'Desde la pantalla principal, ingresa al menú de Opciones y selecciona la sección Reciclar para comenzar el proceso.', color: '#FFCD1C' },
-        { num: 2, label: 'Selecciona el tipo de dispositivo que deseas entregar. La aplicación mostrará categorías para facilitar la selección.', color: '#DB0076' },
-        { num: 3, label: 'Escoge si deseas llevar el dispositivo a un punto de recolección o solicitar recogida.', color: '#FFCD1C' },
-        { num: 4, label: 'Revisa la información y confirma la solicitud. El estado cambiará cuando el proceso sea validado.', color: '#334E9D' },
+        { num: 1, label: 'Desde la pantalla principal, <span style="color:#334E9D; font-weight:700;">ingresa al menú de Opciones</span> y selecciona la sección Reciclar para comenzar el proceso.', img: 'celular 1' },
+        { num: 2, label: 'Selecciona el tipo de dispositivo que deseas entregar. <span style="color:#334E9D; font-weight:700;">La aplicación mostrará categorías</span> para facilitar la selección.', img: 'celular 2' },
+        { num: 3, label: '<span style="color:#334E9D; font-weight:700;">Escoge si deseas</span> llevar el dispositivo a un punto de recolección o solicitar recogida.', img: 'celular 3' },
+        { num: 4, label: '<span style="color:#334E9D; font-weight:700;">Revisa la información y confirma la solicitud.</span> El estado cambiará cuando el proceso sea validado.', img: 'celular 4' },
       ].map(s => `
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num">${s.num}</span>
-                <div class="ayuda-phone">
-                  <div class="ayuda-phone__screen">
-                    <div class="ayuda-phone__topbar">
-                      <span class="ayuda-phone__logo">SIMÖ</span>
-                    </div>
-                    <div class="ayuda-phone__body">
-                      <div class="ayuda-phone__block" style="background:${s.color}; height: 28px; border-radius: 6px; margin-bottom: 8px;"></div>
-                      <div class="ayuda-phone__block" style="background: #eee; height: 14px; border-radius: 4px; margin-bottom: 6px;"></div>
-                      <div class="ayuda-phone__block" style="background: #eee; height: 14px; border-radius: 4px; margin-bottom: 6px; width: 70%;"></div>
-                      <div class="ayuda-phone__block" style="background: ${s.color}33; height: 40px; border-radius: 8px; margin-top: 8px;"></div>
-                    </div>
-                    <div class="ayuda-phone__bottombar">
-                      <span>⌂</span><span>☰</span><span>◻</span><span>👤</span>
-                    </div>
-                  </div>
-                </div>
+                <img src="./assets/styles/images/${s.img}.png" class="ayuda-mockups__phone-img" alt="Paso ${s.num}" />
                 <p class="ayuda-mockups__caption">${s.label}</p>
               </div>
             `).join('')}

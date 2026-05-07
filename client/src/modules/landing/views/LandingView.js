@@ -35,19 +35,12 @@ export class LandingView extends BaseView {
 
         <!-- ─── HERO ────────────────────────────────────────────── -->
         <section class="landing-hero" id="hero">
-          <div class="landing-hero__flower landing-hero__flower--big">${IconHeroFlower(120)}</div>
-          <div class="landing-hero__flower landing-hero__flower--small">${IconHeroFlower(80)}</div>
-          <div class="landing-hero__circle landing-hero__circle--blue"></div>
-          <div class="landing-hero__circle landing-hero__circle--yellow-ring"></div>
-          <div class="landing-hero__triangle landing-hero__triangle--yellow-1"></div>
-          <div class="landing-hero__triangle landing-hero__triangle--yellow-2"></div>
-          <div class="landing-hero__dot landing-hero__dot--1"></div>
-          <div class="landing-hero__dot landing-hero__dot--2"></div>
+          <!-- Solo decoraciones solicitadas -->
 
           <div class="landing-hero__inner">
             <div class="landing-hero__robot">
               <img
-                src="./assets/images/robot-simo.png"
+                src="./assets/styles/images/simo brazos levantados.png"
                 alt="SIMÖ Robot Mascota"
                 class="landing-hero__robot-img"
                 id="robot-img"
@@ -82,20 +75,26 @@ export class LandingView extends BaseView {
                 </p>
               </div>
             </div>
+
           </div>
+
+          <!-- Flores decorativas corregidas (mismo path que en DescargarView) -->
+          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-1" alt="" />
+          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-2" alt="" />
+          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-3" alt="" />
+          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-4" alt="" />
         </section>
 
-        <!-- ─── WAVE TRANSITION ────────────────────────────────── -->
-        <div class="landing-wave">
-          <span class="landing-wave__star">✦</span>
-          <svg class="landing-wave__svg" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0 0C360 70 1080 70 1440 0V80H0V0Z" fill="#FFFCE7"/>
-            <path d="M0 10C360 80 1080 80 1440 10V0C1080 70 360 70 0 0Z" fill="#DB0076"/>
-          </svg>
-        </div>
+
 
         <!-- ─── OFFERS ──────────────────────────────────────────── -->
         <section class="landing-offers" id="ofertas">
+          <!-- Decoraciones del mockup -->
+          <img src="./assets/styles/images/DeoracionInicioSuperiorIzquierda.png" class="landing-offers__decor landing-offers__decor--top-left" alt="" />
+          <img src="./assets/styles/images/DecoracionInicioInferiorDerecha.png" class="landing-offers__decor landing-offers__decor--bottom-right" alt="" />
+          <img src="./assets/styles/images/Estrellainicio.png" class="landing-offers__decor landing-offers__decor--star-1" alt="" />
+          <img src="./assets/styles/images/Estrellainicio.png" class="landing-offers__decor landing-offers__decor--star-2" alt="" />
+
           <div class="landing-offers__inner">
             <div class="landing-offers__text">
               <h2 class="landing-offers__title">
@@ -131,6 +130,10 @@ export class LandingView extends BaseView {
 
         <!-- ─── COLLABORATORS ────────────────────────────────────── -->
         <section class="landing-collabs" id="colaboraciones">
+          <img src="./assets/styles/images/DecoracionInicioInferiorIzquierda1.png" class="landing-collabs__decor landing-collabs__decor--bottom-left" alt="" />
+          <img src="./assets/styles/images/DecoracionIinicioSuperiorIzquierda1.png" class="landing-collabs__decor landing-collabs__decor--top-left" alt="" />
+          <img src="./assets/styles/images/DecoracionInicioSuperiorDerecha1.png" class="landing-collabs__decor landing-collabs__decor--top-right" alt="" />
+
           <div class="landing-collabs__inner">
             <h2 class="landing-collabs__title">¡Colaboradores en SIMÖ!</h2>
             <p class="landing-collabs__desc">
@@ -139,8 +142,7 @@ export class LandingView extends BaseView {
               sostenibles en nuestros establecimientos asociados.
             </p>
             <div class="landing-collabs__carousel">
-              <div class="landing-collabs__track" id="collabs-track">
-                ${this._renderCollabLogos()}
+              <div class="landing-collabs__track">
                 ${this._renderCollabLogos()}
               </div>
             </div>
@@ -160,11 +162,11 @@ export class LandingView extends BaseView {
    */
   _renderCollabLogos() {
     const collaborators = this._viewModel.getState('collaborators') || []
-    return collaborators.map(collab => `
+    // Duplicamos los logos para crear un scroll infinito suave
+    const tripled = [...collaborators, ...collaborators, ...collaborators]
+    return tripled.map(collab => `
       <div class="landing-collabs__logo-item">
-        <span class="landing-collabs__logo-text landing-collabs__logo-text--${collab.type}">
-          ${collab.name}
-        </span>
+        <img src="./assets/styles/images/${collab.img}.png" alt="${collab.name}" class="landing-collabs__logo-img" />
       </div>
     `).join('')
   }

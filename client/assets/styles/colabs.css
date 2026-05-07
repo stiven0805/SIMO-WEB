@@ -21,32 +21,33 @@
 
 .colabs-hero__logo-text {
   font-family: 'Outfit', sans-serif;
-  font-size: 3.5rem;
+  font-size: 7rem;
   font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.06em;
-  line-height: 1;
-  margin-bottom: 0.25rem;
+  color: var(--simo-amarillo);
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  margin-bottom: 0.5rem;
 }
 
 .colabs-hero__title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #FFFCE7;
   margin-bottom: 1.2rem;
+  line-height: 1.1;
 }
 
 .colabs-hero__desc {
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.9);
-  max-width: 560px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #FFFCE7;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .colabs-hero__desc strong {
-  color: #fff;
+  color: var(--simo-amarillo);
   font-weight: 700;
 }
 
@@ -61,11 +62,12 @@
 }
 
 .colabs-hero__deco--left  { left: 0; }
-.colabs-hero__deco--right { right: 0; transform: scaleX(-1); }
+.colabs-hero__deco--right { right: 0; }
 
-.colabs-hero__deco svg {
+.colabs-hero__deco img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 /* ─── SECCIONES ─────────────────────────────────────────────── */
@@ -114,44 +116,24 @@
   gap: 1.2rem;
 }
 
-/* Logo base */
-.colabs-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  min-height: 72px;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-align: center;
-  line-height: 1.2;
-  color: var(--simo-text-dark, #1a1a1a);
+/* ─── Logos en Imagen ───────────────────────────────────────── */
+.colabs-logo-img {
+  width: 100%;
+  height: 75px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  padding: 0.5rem;
+  transition: transform 0.2s ease;
 }
 
-/* ─── Logos Empresas que recompensan ──── */
-.colabs-logo--hm       { color: #e8002d; font-size: 1.8rem; font-weight: 900; }
-.colabs-logo--koaj     { font-size: 1.3rem; letter-spacing: 0.2em; border: 2px solid #1a1a1a; }
-.colabs-logo--verdeo   { color: #2e7d32; font-size: 1.2rem; }
-.colabs-logo--falabella { font-size: 1.3rem; font-style: italic; }
-.colabs-logo--alkatronic { font-size: 0.85rem; line-height: 1.4; }
-.colabs-logo--bettys   { font-size: 0.95rem; color: var(--simo-rosa, #DB0076); }
-.colabs-logo--puntos   { font-size: 0.88rem; color: #c62828; }
-.colabs-logo--jumbo    { background: #007234; color: #fff; font-size: 1.4rem; letter-spacing: 0.1em; }
-.colabs-logo--elo      { font-size: 1.2rem; color: #008080; font-style: italic; }
+.colabs-logo-img:hover {
+  transform: scale(1.05);
+}
 
-/* ─── Logos Empresas de recolección ──── */
-.colabs-logo--raee        { font-size: 0.95rem; border: 2px solid #546e7a; color: #546e7a; }
-.colabs-logo--red-verde   { background: #c62828; color: #fff; font-size: 0.95rem; }
-.colabs-logo--eco-computo { color: #2e7d32; font-size: 0.9rem; }
-.colabs-logo--resiter     { border: 2px solid #1565c0; color: #1565c0; font-size: 1.1rem; }
-.colabs-logo--recopila    { background: #2e7d32; color: #fff; font-size: 1.1rem; }
-.colabs-logo--full-circle { font-size: 0.85rem; color: #1565c0; line-height: 1.3; }
-.colabs-logo--reco        { color: #2e7d32; font-size: 0.95rem; }
-.colabs-logo--veolia      { color: #1565c0; font-size: 1.1rem; letter-spacing: 0.08em; }
-.colabs-logo--ecorecyclar { font-size: 0.9rem; color: #2e7d32; font-style: italic; }
+.colabs-logo-img--large {
+  height: 100px;
+}
 
 /* ─── Nav user icon ─────────────────────────────────────────── */
 .landing-nav__user-btn {

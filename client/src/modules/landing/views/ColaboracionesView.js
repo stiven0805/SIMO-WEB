@@ -37,9 +37,9 @@ export class ColaboracionesView extends BaseView {
             <p class="colabs-hero__logo-text">SIMÖ</p>
             <h1 class="colabs-hero__title">Colaboradores SIMÖ</h1>
             <p class="colabs-hero__desc">
-              En esta sección encontrarás las <strong>empresas y organizaciones</strong> que hacen posible el
-              ecosistema de SIMÖ. Con tu participación, la aplicación puede ofrecer el reciclaje
-              electrónico y ofrecer beneficios a quienes forma parte de esta iniciativa.
+              En esta sección encontrarás las <strong>empresas</strong> y <strong>organizaciones</strong> que hacen posible el
+              funcionamiento de SIMÖ. Gracias a su participación, la aplicación puede incentivar el reciclaje
+              electrónico y ofrecer beneficios a quienes forman parte de esta iniciativa.
             </p>
           </div>
         </section>
@@ -55,15 +55,15 @@ export class ColaboracionesView extends BaseView {
                 una cultura más responsable con la tecnología y el medio ambiente.
               </p>
               <div class="colabs-card__grid">
-                ${ColabLogo({ name: 'H&M', type: 'hm' })}
-                ${ColabLogo({ name: 'KOAJ', type: 'koaj' })}
-                ${ColabLogo({ name: 'verdeo', type: 'verdeo' })}
-                ${ColabLogo({ name: 'falabella.', type: 'falabella' })}
-                ${ColabLogo({ name: '⬛ Alkatronic<br><small>professional</small>', type: 'alkatronic' })}
-                ${ColabLogo({ name: "Betty's<br>bowls", type: 'bettys' })}
-                ${ColabLogo({ name: 'Ⓟ Puntos<br>Colombia', type: 'puntos' })}
-                ${ColabLogo({ name: 'JUMBO', type: 'jumbo' })}
-                ${ColabLogo({ name: '∼elo∼', type: 'elo' })}
+                <img src="./assets/styles/images/HyM.png" class="colabs-logo-img" alt="H&M" />
+                <img src="./assets/styles/images/Koaj.png" class="colabs-logo-img" alt="KOAJ" />
+                <img src="./assets/styles/images/Verdeo.png" class="colabs-logo-img" alt="Verdeo" />
+                <img src="./assets/styles/images/Falabella.png" class="colabs-logo-img" alt="Falabella" />
+                <img src="./assets/styles/images/Alkatronic.png" class="colabs-logo-img" alt="Alkatronic" />
+                <img src="./assets/styles/images/Bettys.png" class="colabs-logo-img" alt="Bettys" />
+                <img src="./assets/styles/images/PuntosColombia.png" class="colabs-logo-img" alt="Puntos Colombia" />
+                <img src="./assets/styles/images/Jumbo.png" class="colabs-logo-img" alt="Jumbo" />
+                <img src="./assets/styles/images/Acampar.png" class="colabs-logo-img" alt="Acampar" />
               </div>
             </div>
           </div>
@@ -76,20 +76,20 @@ export class ColaboracionesView extends BaseView {
               <h2 class="colabs-card__title">Empresas de recolección</h2>
               <p class="colabs-card__desc">
                 Estas organizaciones están encargadas de recibir, clasificar y gestionar los
-                dispositivos electrónicos que se reciclan. Su trabajo permite asegurar que los equipos
+                dispositivos electrónicos reciclados. Su trabajo permite asegurar que los equipos
                 tengan un proceso adecuado de reutilización o reciclaje, reduciendo el impacto
                 ambiental de los residuos tecnológicos.
               </p>
               <div class="colabs-card__grid">
-                ${ColabLogo({ name: '⚙ RAEE', type: 'raee' })}
-                ${ColabLogo({ name: 'RED VERDE', type: 'red-verde' })}
-                ${ColabLogo({ name: '♲ ECO<br>CÓMPUTO', type: 'eco-computo' })}
-                ${ColabLogo({ name: 'RESITER', type: 'resiter' })}
-                ${ColabLogo({ name: 'recopila', type: 'recopila' })}
-                ${ColabLogo({ name: '⏻ Full Circle<br>ELECTRONICS', type: 'full-circle' })}
-                ${ColabLogo({ name: '🌿 RECO', type: 'reco' })}
-                ${ColabLogo({ name: '⊙ VEOLIA', type: 'veolia' })}
-                ${ColabLogo({ name: 'ecorecyclar', type: 'ecorecyclar' })}
+                <img src="./assets/styles/images/Rafe.png" class="colabs-logo-img colabs-logo-img--large" alt="RAEE" />
+                <img src="./assets/styles/images/RedVerde.png" class="colabs-logo-img" alt="Red Verde" />
+                <img src="./assets/styles/images/EcoComputo.png" class="colabs-logo-img" alt="Eco Computo" />
+                <img src="./assets/styles/images/Resiter.png" class="colabs-logo-img colabs-logo-img--large" alt="Resiter" />
+                <img src="./assets/styles/images/Recopila.png" class="colabs-logo-img" alt="Recopila" />
+                <img src="./assets/styles/images/FullCircle.png" class="colabs-logo-img" alt="Full Circle" />
+                <img src="./assets/styles/images/Reco.png" class="colabs-logo-img colabs-logo-img--large" alt="Reco" />
+                <img src="./assets/styles/images/Veolia.png" class="colabs-logo-img" alt="Veolia" />
+                <img src="./assets/styles/images/Ecorecyclar.png" class="colabs-logo-img colabs-logo-img--large" alt="Ecorecyclar" />
               </div>
             </div>
           </div>

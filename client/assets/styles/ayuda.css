@@ -61,7 +61,7 @@
 
 .ayuda-hero__title--roles {
   font-family: 'Outfit', sans-serif;
-  font-size: 3.5rem;
+  font-size: 5rem;
   font-weight: 900;
   color: #fff;
   line-height: 1;
@@ -96,22 +96,39 @@
 
 .ayuda-hero__step-num {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: var(--simo-amarillo, #FFCD1C);
   line-height: 1;
-  min-width: 2rem;
+  min-width: 2.5rem;
+}
+
+/* Ajuste para fondos claros (Beige) */
+.ayuda-mockups .ayuda-hero__step-num,
+.ayuda-modificar .ayuda-hero__step-num {
+  color: var(--simo-azul, #334E9D);
 }
 
 .ayuda-hero__step-text {
-  font-size: 0.85rem;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.9);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.95);
+}
+
+/* Ajuste para fondos claros (Beige) */
+.ayuda-mockups .ayuda-hero__step-text,
+.ayuda-modificar .ayuda-hero__step-text {
+  color: var(--simo-text-dark, #1a1a1a);
 }
 
 .ayuda-hero__step-text strong {
   color: #fff;
   font-weight: 700;
+}
+
+.ayuda-mockups .ayuda-hero__step-text strong,
+.ayuda-modificar .ayuda-hero__step-text strong {
+  color: var(--simo-text-dark, #1a1a1a);
 }
 
 /* ─── Decoraciones del hero ────────── */
@@ -166,15 +183,16 @@
    ───────────────────────────────────────────────────────────────── */
 .ayuda-mockups {
   background: var(--simo-beige, #FFFCE7);
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, var(--simo-beige, #FFFCE7) 0%, #fffbf0 100%);
 }
 
 .ayuda-mockups__inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: start;
 }
 
@@ -194,11 +212,25 @@
 }
 
 .ayuda-mockups__caption {
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.6;
   color: var(--simo-text-gray, #555);
   text-align: center;
-  max-width: 180px;
+  max-width: 220px;
+  margin-top: 0.5rem;
+}
+
+.ayuda-mockups__phone-img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 40px;
+  filter: drop-shadow(0 15px 35px rgba(0,0,0,0.15));
+  transition: transform 0.3s ease;
+}
+
+.ayuda-mockups__phone-img:hover {
+  transform: translateY(-10px);
 }
 
 /* ─────────────────────────────────────────────────────────────────

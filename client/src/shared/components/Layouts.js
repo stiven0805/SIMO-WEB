@@ -27,14 +27,10 @@ export const HeroDecos = () => `
  */
 export const ColabsHeroDecos = () => `
   <div class="colabs-hero__deco colabs-hero__deco--left">
-    <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-      <path d="M100 10 Q20 60 80 100 Q20 140 100 190" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
-    </svg>
+    <img src="./assets/styles/images/DecoracionLadoIzquierdoPaginaColaboraciones.png" alt="" />
   </div>
   <div class="colabs-hero__deco colabs-hero__deco--right">
-    <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 10 Q100 60 40 100 Q100 140 20 190" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
-    </svg>
+    <img src="./assets/styles/images/DecoracionLadoDerechoPaginaColaboraciones.png" alt="" />
   </div>
 `;
 
@@ -134,11 +130,11 @@ export const SharedFooter = () => `
       <div class="landing-footer__top">
         <a href="#" class="landing-footer__logo landing-nav__page-link" data-page="home">SIMÖ</a>
         <div class="landing-footer__social">
-          <a href="#" class="landing-footer__social-link" aria-label="Twitter">𝕏</a>
-          <a href="#" class="landing-footer__social-link" aria-label="YouTube">▶</a>
-          <a href="#" class="landing-footer__social-link" aria-label="Google">G</a>
-          <a href="#" class="landing-footer__social-link" aria-label="Instagram">📷</a>
-          <a href="#" class="landing-footer__social-link" aria-label="Facebook">f</a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 1"><img src="./assets/styles/images/Icono 1 1.png" alt="Icono 1" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 2"><img src="./assets/styles/images/Icono 2 1.png" alt="Icono 2" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 3"><img src="./assets/styles/images/Icono 3 1.png" alt="Icono 3" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 4"><img src="./assets/styles/images/Icono 4 1.png" alt="Icono 4" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 5"><img src="./assets/styles/images/Icono 5 1.png" alt="Icono 5" /></a>
         </div>
       </div>
       <div class="landing-footer__columns">

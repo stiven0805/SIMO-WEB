@@ -29,42 +29,31 @@ export class QuienesSomosView extends BaseView {
    */
   render() {
     return `
-      <div class="landing">
+      <div class="landing landing--about">
 
         ${PublicNav('quienes-somos', 'blue')}
 
         <!-- ─── ¿QUÉ ES SIMÖ? ─────────────────────────────────── -->
-        <section class="about-what" id="que-es-simo">
-          <div class="about-what__inner">
-            <div class="about-what__content">
-              <h1 class="about-what__title">¿Qué es<br><span class="about-what__title--accent">SIMÖ</span>?</h1>
-              <p class="about-what__text">
-                SIMÖ es una aplicación que busca <strong>transformar la forma en que
-                reciclamos la tecnología</strong>, convirtiendo el reciclaje electrónico
-                en una experiencia accesible, gratificante y responsable.
+        <section class="about-hero" id="que-es-simo">
+          <div class="about-hero__inner">
+            <div class="about-hero__content">
+              <h1 class="about-hero__title">
+                ¿Qué es<br>
+                <span class="about-hero__title-accent">SIMÖ?</span>
+              </h1>
+              <p class="about-hero__text">
+                SIMÖ es una <strong>aplicación que busca transformar</strong> la forma en que reciclamos tecnología, convirtiendo el reciclaje electrónico en una experiencia simple, accesible y participativa.
               </p>
-              <p class="about-what__text">
-                A través de <strong>recompensas e incentivos</strong>, SIMÖ motiva a
-                jóvenes y comunidades a reciclar sus dispositivos electrónicos de
-                manera responsable, promoviendo una cultura tecnológica más
-                consciente y sostenible.
+              <p class="about-hero__text">
+                A través de recompensas y beneficios, <strong>incentiva a jóvenes y adultos de Medellín</strong> a involucrarse activamente en el cuidado del entorno, promoviendo una cultura tecnológica más consciente y responsable.
               </p>
-              <p class="about-what__text">
-                SIMÖ mezcla <strong>tecnología, creatividad y sostenibilidad</strong>
-                para lograr que la segunda vida de tus dispositivos electrónicos,
-                además de ayudar al planeta, también genere valor y beneficio a
-                sus propietarios.
+              <p class="about-hero__text">
+                SIMÖ conecta tecnología, comunidad y sostenibilidad para dar <strong>una segunda vida a los dispositivos electrónicos</strong>, evitando que terminen olvidados o desechados sin un proceso adecuado.
               </p>
             </div>
-            <div class="about-what__visual">
-              <div class="about-what__badge">
-                <span class="about-what__badge-label">OBJETIVO</span>
-                <p class="about-what__badge-text">Reciclar para transformar</p>
-              </div>
-              <div class="about-what__decor">
-                ${IconFlower('#DB0076', '#FFCD1C', 100)}
-                ${IconFlower('#FFCD1C', '#334E9D', 100)}
-                ${IconFlower('#2E7D32', '#FFCD1C', 100)}
+            <div class="about-hero__visual">
+              <div class="about-hero__robot-wrapper">
+                <img src="./assets/styles/images/cabeza simo.png" class="about-hero__robot" alt="Mascota SIMÖ" />
               </div>
             </div>
           </div>
@@ -72,23 +61,38 @@ export class QuienesSomosView extends BaseView {
 
         <!-- ─── IDEALES DE SIMÖ ────────────────────────────────── -->
         <section class="about-ideals" id="ideales">
+          <!-- Swirls decorativas rosa simétricas -->
+          <img src="./assets/styles/images/DeoracionInicioSuperiorIzquierda.png" class="about-ideals__swirl about-ideals__swirl--left" alt="" />
+          <img src="./assets/styles/images/DeoracionInicioSuperiorIzquierda.png" class="about-ideals__swirl about-ideals__swirl--right" alt="" />
+
           <div class="about-ideals__inner">
-            <h2 class="about-ideals__title">¡Ideales de <span>SIMÖ</span>!</h2>
-            <div class="about-ideals__flowers">
-              ${IconFlower('#DB0076', '#FFCD1C', 80)}
-              ${IconFlower('#FFCD1C', '#334E9D', 80)}
-              ${IconFlower('#2E7D32', '#FFCD1C', 80)}
-              ${IconFlower('#334E9D', '#DB0076', 80)}
-              ${IconFlower('#DB0076', '#334E9D', 80)}
-              ${IconFlower('#FFCD1C', '#DB0076', 80)}
-              ${IconFlower('#2E7D32', '#334E9D', 80)}
-              ${IconFlower('#334E9D', '#FFCD1C', 80)}
-            </div>
+            <h2 class="about-ideals__title">¡Ideales de SIMÖ!</h2>
+            
             <div class="about-ideals__grid">
-              ${IdealCard({ id: 'simplicidad', name: 'Simplicidad', desc: 'Hacer del reciclaje tecnológico un proceso fácil y accesible para todos.', iconSvg: IconCheck() })}
-              ${IdealCard({ id: 'conciencia', name: 'Conciencia ambiental', desc: 'Promover hábitos responsables que reduzcan el impacto de los residuos electrónicos.', iconSvg: IconLeaf() })}
-              ${IdealCard({ id: 'comunidad', name: 'Comunidad', desc: 'Conectar personas, empresas y cadenas de reciclaje bajo un objetivo común: cuidar el medio ambiente.', iconSvg: IconPeople() })}
-              ${IdealCard({ id: 'innovacion', name: 'Innovación', desc: 'Usar la tecnología como herramienta para generar cambios positivos en ciudades.', iconSvg: IconStar() })}
+              ${IdealCard({ 
+                id: 'simplicidad', 
+                name: 'Simplicidad', 
+                desc: 'Hacer del reciclaje tecnológico un proceso fácil y accesible para todos.', 
+                iconSvg: `<img src="./assets/styles/images/estrella 1.png" alt="Simplicidad" class="about-ideals__icon" />` 
+              })}
+              ${IdealCard({ 
+                id: 'conciencia', 
+                name: 'Conciencia ambiental', 
+                desc: 'Promover hábitos responsables que reduzcan el impacto de los residuos electrónicos.', 
+                iconSvg: `<img src="./assets/styles/images/estrella 2.png" alt="Conciencia" class="about-ideals__icon" />` 
+              })}
+              ${IdealCard({ 
+                id: 'comunidad', 
+                name: 'Comunidad', 
+                desc: 'Conectar personas, empresas y ciudad alrededor de un objetivo común: cuidar el entorno.', 
+                iconSvg: `<img src="./assets/styles/images/estrella 3.png" alt="Comunidad" class="about-ideals__icon" />` 
+              })}
+              ${IdealCard({ 
+                id: 'innovacion', 
+                name: 'Innovación', 
+                desc: 'Usar la tecnología como herramienta para generar cambios positivos y duraderos.', 
+                iconSvg: `<img src="./assets/styles/images/estrella 4.png" alt="Innovación" class="about-ideals__icon" />` 
+              })}
             </div>
           </div>
         </section>
@@ -100,25 +104,23 @@ export class QuienesSomosView extends BaseView {
               <span class="about-participate__logo">SIMÖ</span>
               <h2 class="about-participate__title">¿Cómo participo en?</h2>
               <p class="about-participate__desc">
-                SIMÖ funciona gracias a la participación de dos actores principales:
+                SIMÖ funciona gracias a la participación de dos actores principales
               </p>
             </div>
+            
             <div class="about-participate__cards">
-              <div class="about-participate__card about-participate__card--user">
+              <div class="about-participate__card">
+                <img src="./assets/styles/images/estrella 3.png" class="about-participate__card-icon" alt="" />
                 <h3 class="about-participate__card-title">Usuario reciclador</h3>
                 <p class="about-participate__card-text">
-                  Personas que entregan sus dispositivos electrónicos en desuso
-                  para darles una segunda vida mientras acceden al catálogo
-                  ambiental, obteniendo beneficios y recompensas.
+                  Personas que <strong>entregan sus dispositivos</strong> electrónicos en desuso para darles un manejo responsable y contribuir al cuidado ambiental mientras <strong>reciben beneficios</strong> y recompensas.
                 </p>
               </div>
-              <div class="about-participate__card about-participate__card--ally">
+              <div class="about-participate__card">
+                <img src="./assets/styles/images/estrella 1.png" class="about-participate__card-icon" alt="" />
                 <h3 class="about-participate__card-title">Aliado recolector</h3>
                 <p class="about-participate__card-text">
-                  Empresas o gestores encargados de recibir, clasificar y
-                  gestionar los dispositivos, ofreciendo a los recicladores
-                  una plataforma para consignar su correcto reciclaje y
-                  reutilización.
+                  Empresas o gestores <strong>encargados de recibir</strong>, clasificar y gestionar los dispositivos electrónicos <strong>para asegurar</strong> su correcto reciclaje y reutilización.
                 </p>
               </div>
             </div>

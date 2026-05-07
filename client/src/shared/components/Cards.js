@@ -183,17 +183,24 @@ export const ModificarPhoneMockup = (isConfirmation = false) => `
 /**
  * Tarjeta de Oferta (Usada en Landing)
  */
-export const OfferCard = (offer) => `
-  <div class="offer-card">
-    <div class="offer-card__icon-wrapper">
+export const OfferCard = (offer) => {
+  return `
+    <div class="offer-card">
       <span class="offer-card__badge">${offer.quantity}</span>
-      <span class="offer-card__icon">${offer.icon}</span>
+      
+      <div class="offer-card__image-container">
+        ${offer.img ? `<img src="./assets/styles/images/${offer.img}.png" alt="${offer.name}" class="offer-card__img" />` : offer.icon}
+      </div>
+
+      <div class="offer-card__points">
+        <span class="offer-card__points-icon">
+          <img src="./assets/styles/images/FlorNegra.png" alt="Puntos" class="offer-card__points-img" />
+        </span>
+        <span class="offer-card__points-value">${offer.points}</span>
+      </div>
+
+      <h4 class="offer-card__name">${offer.name}</h4>
+      <p class="offer-card__dest">Destino: ${offer.destination}</p>
     </div>
-    <div class="offer-card__points">
-      <span class="offer-card__points-icon">🪙</span>
-      ${offer.points}
-    </div>
-    <p class="offer-card__name">${offer.name}</p>
-    <p class="offer-card__dest">Destino: ${offer.destination}</p>
-  </div>
-`;
+  `;
+};
