@@ -55,7 +55,7 @@ export class PerfilViewModel extends BaseViewModel {
         pointsPromise
       ])
 
-      const user = profileRes.usuario;
+      const user = profileRes.data?.usuario || profileRes.usuario;
       this.setState({ 
         user,
         editForm: {
@@ -63,9 +63,9 @@ export class PerfilViewModel extends BaseViewModel {
           telefono: user.telefono || '',
           direccion: user.direccion || ''
         },
-        points: pointsRes.puntos || 0,
-        devicesRecycled: statsRes.dispositivos_reciclados || 0,
-        kgAvoided: statsRes.kg_evitados || 0
+        points: pointsRes.data?.puntos || pointsRes.puntos || 0,
+        devicesRecycled: statsRes.data?.dispositivos_reciclados || statsRes.dispositivos_reciclados || 0,
+        kgAvoided: statsRes.data?.kg_evitados || statsRes.kg_evitados || 0
       })
       
       // Actualizar authStore para que el Header también se entere
@@ -90,7 +90,7 @@ export class PerfilViewModel extends BaseViewModel {
     try {
       const data = this.getState('editForm');
       const res = await userService.updateProfile(data);
-      const updatedUser = res.usuario;
+      const updatedUser = res.data?.usuario || res.usuario;
       
       this.setState({ 
         user: updatedUser,
@@ -99,6 +99,9 @@ export class PerfilViewModel extends BaseViewModel {
       })
       
       authStore.setSession({ token: authStore.token, user: updatedUser })
+      
+      // Forzar recarga de página para sincronización total como solicitó el usuario
+      window.location.reload()
     } catch (err) {
       console.error('Error actualizando:', err)
       alert('Error al actualizar perfil');
