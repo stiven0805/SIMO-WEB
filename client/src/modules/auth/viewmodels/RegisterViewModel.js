@@ -44,8 +44,8 @@ export class RegisterViewModel extends BaseViewModel {
       const res = await authService.register({ nombre, email, password, cedula, telefono, direccion });
       console.log('[RegisterViewModel] Respuesta del servidor:', res)
       // Guardar token y cerrar modal o auto-loguear
-      if (res.data && res.data.token) {
-        eventBus.emit('auth:loginSuccess', { user: res.data.user, token: res.data.token });
+      if (res && res.token) {
+        eventBus.emit('auth:loginSuccess', { user: res.usuario, token: res.token });
       } else {
         // Registro exitoso pero sin token, cerrar modal
         eventBus.emit('auth:closeModal')

@@ -26,7 +26,7 @@ import { NotificacionesView } from './src/modules/dashboard/views/Notificaciones
 
 // ─── Configuración global ──────────────────────────────────────────────────
 
-httpClient.setBaseUrl('http://localhost:3000')
+httpClient.setBaseUrl('https://simobackend-production.up.railway.app')
 
 // ─── Restaurar sesión previa ───────────────────────────────────────────────
 
@@ -111,6 +111,7 @@ if (authStore.isAuthenticated) {
 } else {
   navigateTo(LandingView)
 }
+
 
 // ─── Eventos globales de navegación ──────────────────────────────────────
 

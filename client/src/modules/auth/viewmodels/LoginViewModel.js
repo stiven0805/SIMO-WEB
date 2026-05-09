@@ -41,8 +41,9 @@ export class LoginViewModel extends BaseViewModel {
       
       this.stopLoading()
       
-      if (res.data && res.data.token) {
-        eventBus.emit('auth:loginSuccess', { user: res.data.user, token: res.data.token });
+      if (res && res.token) {
+        // El backend de ellos devuelve { token, usuario }
+        eventBus.emit('auth:loginSuccess', { user: res.usuario, token: res.token });
       } else {
         eventBus.emit('auth:closeModal')
       }

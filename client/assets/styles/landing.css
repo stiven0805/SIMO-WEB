@@ -505,7 +505,7 @@
   position: relative;
   background: var(--simo-amarillo);
   border-radius: 16px;
-  padding: 1.25rem 0.5rem 0.75rem;
+  padding: 2.2rem 0.5rem 0.75rem; /* Aumentado el padding top para darle espacio al badge */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1468,20 +1468,144 @@
    RESPONSIVE
    ─────────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .landing-hero__inner {
+  /* ── NAV: activar hamburguesa también en tablet ── */
+  .landing-nav__links {
+    position: fixed;
+    top: 78px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--simo-beige);
     flex-direction: column;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    align-items: center;
     text-align: center;
-    padding: 2rem 2rem 3rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 99;
+    border-top: 3px solid var(--simo-rosa);
   }
 
+  .landing-nav__links--open {
+    transform: translateX(0);
+  }
+
+  .landing-nav__hamburger {
+    display: flex;
+  }
+
+  /* Links y dropdown dentro del menú hamburguesa (tablet + mobile) */
+  .landing-nav__link {
+    font-size: 1rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .landing-nav__dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .landing-nav__link--dropdown {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .landing-nav__dropdown .landing-nav__dropdown-menu {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0.25rem 0;
+    background: transparent;
+    opacity: 1 !important;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    width: 100% !important;
+    min-width: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: auto !important;
+  }
+
+  .landing-nav__dropdown--open .landing-nav__dropdown-menu {
+    visibility: visible !important;
+    max-height: 500px;
+    transform: none !important;
+  }
+
+  .landing-nav__dropdown-menu::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  .landing-nav__dropdown-item {
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: break-word;
+    padding: 0.6rem 0.5rem;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  /* ── HERO: modo tablet/mobile ── */
+  .landing-hero {
+    height: auto;
+    min-height: 100svh;
+    padding: 2rem 0 3rem;
+    align-items: flex-start;
+  }
+
+  .landing-hero__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  /* Robot: sacar del absolute para que empuje el contenido */
   .landing-hero__robot {
-    flex: none;
-    max-width: 280px;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 55%;
+    max-width: 220px;
     margin: 0 auto;
+    z-index: 2;
   }
 
   .landing-hero__content {
+    flex: none;
+    width: 100%;
     padding-top: 0;
+    z-index: 3;
+  }
+
+  /* Resetear el margen negativo: en mobile los puntos del Ö se solapan */
+  .landing-hero__greeting {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
   }
 
   .landing-hero__text {
@@ -1491,6 +1615,14 @@
 
   .landing-hero__title {
     font-size: 3.5rem;
+  }
+
+  /* Decoraciones: ocultar para que no tapen el texto en tablet */
+  .landing-hero__decor--flower-1,
+  .landing-hero__decor--flower-2,
+  .landing-hero__decor--flower-3,
+  .landing-hero__decor--flower-4 {
+    display: none;
   }
 
   .landing-offers__inner {
@@ -1517,6 +1649,40 @@
     flex: none;
     width: 100%;
     min-height: 250px;
+  }
+
+  /* Ocultar swirlss que tapan el título "Ideales" en mobile */
+  .about-ideals__swirl--left,
+  .about-ideals__swirl--right {
+    display: none;
+  }
+
+  /* Stack del hero de Quiénes somos */
+  .about-hero__inner {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .about-hero__visual {
+    flex: none;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* Título "¿Qué es SIMÖ?" — evitar solapamiento de puntos del Ö en mobile */
+  .about-hero__title {
+    font-size: 2rem;
+    line-height: 1.15;    /* Sube desde 0.9 para que el Ö no tape el texto superior */
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .about-hero__title-accent {
+    font-size: 4rem;      /* Reducido desde 6.5rem — proporcional a la pantalla */
+    margin-top: 0.3rem;
   }
 
   .about-ideals__grid {
@@ -1562,9 +1728,12 @@
     bottom: 0;
     background: var(--simo-beige);
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 1rem;
     gap: 1.5rem;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    overflow-y: auto;
     transform: translateX(100%);
     transition: transform 0.35s ease;
     z-index: 99;
@@ -1581,32 +1750,74 @@
 
   .landing-nav__link {
     font-size: 1rem;
+    white-space: normal;
+    text-align: center;
   }
 
-  .landing-nav__dropdown-menu {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    padding: 0.5rem 1rem;
-    opacity: 1;
+  .landing-nav__dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .landing-nav__link--dropdown {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ─── Reseteo COMPLETO del dropdown en mobile ─── */
+  .landing-nav__dropdown .landing-nav__dropdown-menu {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0.25rem 0;
+    background: transparent;
+    opacity: 1 !important;
     visibility: hidden;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, visibility 0.3s ease;
+    transition: max-height 0.3s ease;
+    width: 100% !important;
+    min-width: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: auto !important;
   }
 
+  .landing-nav__dropdown--open .landing-nav__dropdown .landing-nav__dropdown-menu,
+  .landing-nav__dropdown--open > .landing-nav__dropdown-menu,
   .landing-nav__dropdown--open .landing-nav__dropdown-menu {
-    visibility: visible;
-    max-height: 300px;
+    visibility: visible !important;
+    max-height: 500px;
+    transform: none !important;
   }
 
   .landing-nav__dropdown-menu::before {
-    display: none;
+    display: none !important;
+    content: none !important;
   }
 
+  /* Items del dropdown centrados y sin desbordarse */
   .landing-nav__dropdown-item {
-    text-align: left;
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: break-word;
+    padding: 0.6rem 0.5rem;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
   }
 
   .landing-hero__title {
@@ -1708,8 +1919,45 @@
     padding: 0 1rem;
   }
 
+  /* Hero: ajustes para móvil pequeño */
+  .landing-hero {
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .landing-hero__inner {
+    padding: 1rem 1.25rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .landing-hero__robot {
+    max-width: 160px;
+  }
+
+  .landing-hero__greeting {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
   .landing-hero__title {
-    font-size: 2.2rem;
+    font-size: 3rem;
+  }
+
+  .landing-hero__subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .landing-hero__text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* Ocultar decoraciones secundarias en móvil pequeño */
+  .landing-offers__decor--top-left,
+  .landing-offers__decor--bottom-right,
+  .landing-offers__decor--star-1,
+  .landing-offers__decor--star-2 {
+    display: none;
   }
 
   .landing-offers__grid {

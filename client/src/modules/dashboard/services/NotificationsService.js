@@ -7,11 +7,11 @@ import { httpClient } from '../../../shared/utils/httpClient.js';
 
 class NotificationsService {
   async fetchNotifications() {
-    return httpClient.get('/api/notifications');
+    return httpClient.get('/api/notificaciones');
   }
 
   async markAsRead(id) {
-    return httpClient.patch(`/api/notifications/${id}/read`, {});
+    return httpClient.put(`/api/notificaciones/${id}/leer`, {});
   }
 }
 
