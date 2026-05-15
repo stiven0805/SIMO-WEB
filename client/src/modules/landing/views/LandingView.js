@@ -14,6 +14,17 @@ import { bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
 import { PublicNav, SharedFooter } from '../../../shared/components/Layouts.js'
 import { OfferCard } from '../../../shared/components/Cards.js'
 import { IconHeroFlower } from '../../../shared/components/Icons.js'
+import brazoslevantado from '../../../../assets/styles/images/simo brazos levantados.png';
+import Baterias from '../../../../assets/styles/images/bateria.png';
+
+
+import DecoracionInicioSuperiorDerecha1 from '../../../../assets/styles/images/DecoracionInicioSuperiorDerecha1.png';
+import DecoracionIinicioSuperiorIzquierda1 from '../../../../assets/styles/images/DecoracionIinicioSuperiorIzquierda1.png';
+import DecoracionInicioInferiorIzquierda1 from '../../../../assets/styles/images/DecoracionInicioInferiorIzquierda1.png';
+import Estrellainicio from '../../../../assets/styles/images/EstrellaIinicio.png';
+import DecoracionInicioInferiorDerecha from '../../../../assets/styles/images/DecoracionInicioInferiorDerecha.png';
+import DeoracionInicioSuperiorIzquierda from '../../../../assets/styles/images/DeoracionInicioSuperiorIzquierda.png';
+import florazul from '../../../../assets/styles/images/flor azul.png';
 
 export class LandingView extends BaseView {
   constructor(options = {}) {
@@ -40,7 +51,7 @@ export class LandingView extends BaseView {
           <div class="landing-hero__inner">
             <div class="landing-hero__robot">
               <img
-                src="./assets/styles/images/simo brazos levantados.png"
+                src=${brazoslevantado}
                 alt="SIMÖ Robot Mascota"
                 class="landing-hero__robot-img"
                 id="robot-img"
@@ -79,10 +90,10 @@ export class LandingView extends BaseView {
           </div>
 
           <!-- Flores decorativas corregidas (mismo path que en DescargarView) -->
-          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-1" alt="" />
-          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-2" alt="" />
-          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-3" alt="" />
-          <img src="./assets/styles/images/flor azul.png" class="landing-hero__decor landing-hero__decor--flower-4" alt="" />
+          <img src=${florazul} class="landing-hero__decor landing-hero__decor--flower-1" alt="" />
+          <img src=${florazul} class="landing-hero__decor landing-hero__decor--flower-2" alt="" />
+          <img src=${florazul} class="landing-hero__decor landing-hero__decor--flower-3" alt="" />
+          <img src=${florazul} class="landing-hero__decor landing-hero__decor--flower-4" alt="" />
         </section>
 
 
@@ -90,10 +101,10 @@ export class LandingView extends BaseView {
         <!-- ─── OFFERS ──────────────────────────────────────────── -->
         <section class="landing-offers" id="ofertas">
           <!-- Decoraciones del mockup -->
-          <img src="./assets/styles/images/DeoracionInicioSuperiorIzquierda.png" class="landing-offers__decor landing-offers__decor--top-left" alt="" />
-          <img src="./assets/styles/images/DecoracionInicioInferiorDerecha.png" class="landing-offers__decor landing-offers__decor--bottom-right" alt="" />
-          <img src="./assets/styles/images/Estrellainicio.png" class="landing-offers__decor landing-offers__decor--star-1" alt="" />
-          <img src="./assets/styles/images/Estrellainicio.png" class="landing-offers__decor landing-offers__decor--star-2" alt="" />
+          <img src=${DeoracionInicioSuperiorIzquierda} class="landing-offers__decor landing-offers__decor--top-left" alt="" />
+          <img src=${DecoracionInicioInferiorDerecha} class="landing-offers__decor landing-offers__decor--bottom-right" alt="" />
+          <img src=${Estrellainicio} class="landing-offers__decor landing-offers__decor--star-1" alt="" />
+          <img src=${Estrellainicio} class="landing-offers__decor landing-offers__decor--star-2" alt="" />
 
           <div class="landing-offers__inner">
             <div class="landing-offers__text">
@@ -130,9 +141,9 @@ export class LandingView extends BaseView {
 
         <!-- ─── COLLABORATORS ────────────────────────────────────── -->
         <section class="landing-collabs" id="colaboraciones">
-          <img src="./assets/styles/images/DecoracionInicioInferiorIzquierda1.png" class="landing-collabs__decor landing-collabs__decor--bottom-left" alt="" />
-          <img src="./assets/styles/images/DecoracionIinicioSuperiorIzquierda1.png" class="landing-collabs__decor landing-collabs__decor--top-left" alt="" />
-          <img src="./assets/styles/images/DecoracionInicioSuperiorDerecha1.png" class="landing-collabs__decor landing-collabs__decor--top-right" alt="" />
+          <img src=${DecoracionInicioInferiorIzquierda1} class="landing-collabs__decor landing-collabs__decor--bottom-left" alt="" />
+          <img src=${DecoracionIinicioSuperiorIzquierda1} class="landing-collabs__decor landing-collabs__decor--top-left" alt="" />
+          <img src=${DecoracionInicioSuperiorDerecha1} class="landing-collabs__decor landing-collabs__decor--top-right" alt="" />
 
           <div class="landing-collabs__inner">
             <h2 class="landing-collabs__title">¡Colaboradores en SIMÖ!</h2>
@@ -166,7 +177,7 @@ export class LandingView extends BaseView {
     const tripled = [...collaborators, ...collaborators, ...collaborators]
     return tripled.map(collab => `
       <div class="landing-collabs__logo-item">
-        <img src="./assets/styles/images/${collab.img}.png" alt="${collab.name}" class="landing-collabs__logo-img" />
+        <img src="${collab.imgSrc ? collab.imgSrc : `./assets/styles/images/${collab.img}.png`}" alt="${collab.name}" class="landing-collabs__logo-img" />
       </div>
     `).join('')
   }

@@ -15,6 +15,11 @@ import { PublicNav, SharedFooter } from '../../../shared/components/Layouts.js'
 import { StepCard } from '../../../shared/components/Cards.js'
 import { IconFlower } from '../../../shared/components/Icons.js'
 
+import Estrellainicio from '../../../../assets/styles/images/EstrellaIinicio.png';
+import playbueno from '../../../../assets/styles/images/play bueno.png';
+import simobueno from '../../../../assets/styles/images/simo bueno.png';
+import florazul from '../../../../assets/styles/images/flor azul.png';
+
 export class DescargarView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new DescargarViewModel()
@@ -41,7 +46,7 @@ export class DescargarView extends BaseView {
                 <span class="download-hero__title-small">Descarga</span>
                 <span class="download-hero__title-big">
                   SIMÖ
-                  <img src="./assets/styles/images/flor azul.png" class="download-hero__title-flower" alt="Flor" />
+                  <img src=${florazul} class="download-hero__title-flower" alt="Flor" />
                 </span>
               </h1>
               <p class="download-hero__text">
@@ -64,17 +69,17 @@ export class DescargarView extends BaseView {
               </div>
 
               <div class="download-hero__robot-container">
-                <img src="./assets/styles/images/simo bueno.png" class="download-hero__robot" alt="Robot SIMÖ" />
+                <img src=${simobueno} class="download-hero__robot" alt="Robot SIMÖ" />
               </div>
 
               <a href="#" class="download-hero__play-btn">
-                <img src="./assets/styles/images/play bueno.png" class="download-hero__play-img" alt="Get it on Google Play" />
+                <img src=${playbueno} class="download-hero__play-img" alt="Get it on Google Play" />
               </a>
 
               <!-- Flores decorativas amarillas simétricas al mockup -->
-              <img src="./assets/styles/images/Estrellainicio.png" class="download-hero__flower download-hero__flower--1" alt="" />
-              <img src="./assets/styles/images/Estrellainicio.png" class="download-hero__flower download-hero__flower--2" alt="" />
-              <img src="./assets/styles/images/Estrellainicio.png" class="download-hero__flower download-hero__flower--3" alt="" />
+              <img src=${Estrellainicio} class="download-hero__flower download-hero__flower--1" alt="" />
+              <img src=${Estrellainicio} class="download-hero__flower download-hero__flower--2" alt="" />
+              <img src=${Estrellainicio} class="download-hero__flower download-hero__flower--3" alt="" />
             </div>
           </div>
         </section>

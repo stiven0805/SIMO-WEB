@@ -6,6 +6,9 @@
 
 import { IconFlower, DeviceIcon } from './Icons.js';
 
+import FlorNegra from '../../../assets/styles/images/FlorNegra.png';
+import flor from '../../../assets/styles/images/flor.png';
+
 /**
  * Tarjeta de Ideal (Usada en Quiénes Somos)
  */
@@ -57,7 +60,7 @@ export const NotificacionCard = (item) => {
           <p class="notif-card__row">Fecha: ${item.date}</p>
         </div>
         <div class="notif-card__points">
-          <img src="./assets/styles/images/flor.png" alt="Puntos" class="notif-card__flower" />
+          <img src=${flor} alt="Puntos" class="notif-card__flower" />
           <span>${item.points}</span>
         </div>
         <div class="notif-card__footer">
@@ -193,12 +196,12 @@ export const OfferCard = (offer) => {
       <span class="offer-card__badge">${offer.quantity}</span>
       
       <div class="offer-card__image-container">
-        ${offer.img ? `<img src="./assets/styles/images/${offer.img}.png" alt="${offer.name}" class="offer-card__img" />` : offer.icon}
+        ${offer.imgSrc ? `<img src="${offer.imgSrc}" alt="${offer.name}" class="offer-card__img" />` : (offer.img ? `<img src="./assets/styles/images/${offer.img}.png" alt="${offer.name}" class="offer-card__img" />` : offer.icon)}
       </div>
 
       <div class="offer-card__points">
         <span class="offer-card__points-icon">
-          <img src="./assets/styles/images/FlorNegra.png" alt="Puntos" class="offer-card__points-img" />
+          <img src=${FlorNegra} alt="Puntos" class="offer-card__points-img" />
         </span>
         <span class="offer-card__points-value">${offer.points}</span>
       </div>

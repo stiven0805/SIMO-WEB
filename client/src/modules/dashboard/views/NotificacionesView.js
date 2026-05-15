@@ -14,6 +14,8 @@ import { bindAuthNavEvents, bindFooterEvents } from '../../landing/views/shared/
 import { AuthNav, SharedFooter, HeroDecos } from '../../../shared/components/Layouts.js'
 import { NotificacionCard } from '../../../shared/components/Cards.js'
 
+import flor from '../../../../assets/styles/images/flor.png';
+
 export class NotificacionesView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new NotificacionesViewModel()
@@ -66,7 +68,7 @@ export class NotificacionesView extends BaseView {
                     </div>
 
                     <div class="notif-detalle__points-badge">
-                      <img src="./assets/styles/images/flor.png" alt="Puntos" class="notif-detalle__flower" />
+                      <img src=${flor} alt="Puntos" class="notif-detalle__flower" />
                       <span>${selectedItem.points}</span>
                     </div>
                   </div>

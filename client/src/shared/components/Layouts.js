@@ -6,6 +6,14 @@
 
 import { IconUser } from './Icons.js';
 
+import Icono51 from '../../../assets/styles/images/Icono 5 1.png';
+import Icono41 from '../../../assets/styles/images/Icono 4 1.png';
+import Icono31 from '../../../assets/styles/images/Icono 3 1.png';
+import Icono21 from '../../../assets/styles/images/Icono 2 1.png';
+import Icono11 from '../../../assets/styles/images/Icono 1 1.png';
+import DecoracionLadoDerechoPaginaColaboraciones from '../../../assets/styles/images/DecoracionLadoDerechoPaginaColaboraciones.png';
+import DecoracionLadoIzquierdoPaginaColaboraciones from '../../../assets/styles/images/DecoracionLadoIzquierdoPaginaColaboraciones.png';
+
 /**
  * Decoraciones de Hero (Líneas curvas blancas)
  */
@@ -27,10 +35,10 @@ export const HeroDecos = () => `
  */
 export const ColabsHeroDecos = () => `
   <div class="colabs-hero__deco colabs-hero__deco--left">
-    <img src="./assets/styles/images/DecoracionLadoIzquierdoPaginaColaboraciones.png" alt="" />
+    <img src=${DecoracionLadoIzquierdoPaginaColaboraciones} alt="" />
   </div>
   <div class="colabs-hero__deco colabs-hero__deco--right">
-    <img src="./assets/styles/images/DecoracionLadoDerechoPaginaColaboraciones.png" alt="" />
+    <img src=${DecoracionLadoDerechoPaginaColaboraciones} alt="" />
   </div>
 `;
 
@@ -131,11 +139,11 @@ export const SharedFooter = () => `
       <div class="landing-footer__top">
         <a href="#" class="landing-footer__logo landing-nav__page-link" data-page="home">SIMÖ</a>
         <div class="landing-footer__social">
-          <a href="#" class="landing-footer__social-link" aria-label="Icono 1"><img src="./assets/styles/images/Icono 1 1.png" alt="Icono 1" /></a>
-          <a href="#" class="landing-footer__social-link" aria-label="Icono 2"><img src="./assets/styles/images/Icono 2 1.png" alt="Icono 2" /></a>
-          <a href="#" class="landing-footer__social-link" aria-label="Icono 3"><img src="./assets/styles/images/Icono 3 1.png" alt="Icono 3" /></a>
-          <a href="#" class="landing-footer__social-link" aria-label="Icono 4"><img src="./assets/styles/images/Icono 4 1.png" alt="Icono 4" /></a>
-          <a href="#" class="landing-footer__social-link" aria-label="Icono 5"><img src="./assets/styles/images/Icono 5 1.png" alt="Icono 5" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 1"><img src=${Icono11} alt="Icono 1" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 2"><img src=${Icono21} alt="Icono 2" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 3"><img src=${Icono31} alt="Icono 3" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 4"><img src=${Icono41} alt="Icono 4" /></a>
+          <a href="#" class="landing-footer__social-link" aria-label="Icono 5"><img src=${Icono51} alt="Icono 5" /></a>
         </div>
       </div>
       <div class="landing-footer__columns">

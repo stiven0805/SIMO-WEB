@@ -15,6 +15,13 @@ import { PublicNav, SharedFooter } from '../../../shared/components/Layouts.js'
 import { IdealCard } from '../../../shared/components/Cards.js'
 import { IconCheck, IconLeaf, IconPeople, IconStar, IconFlower } from '../../../shared/components/Icons.js'
 
+import estrella1 from '../../../../assets/styles/images/estrella 1.png';
+import estrella3 from '../../../../assets/styles/images/estrella 3.png';
+import estrella4 from '../../../../assets/styles/images/estrella 4.png';
+import estrella2 from '../../../../assets/styles/images/estrella 2.png';
+import DeoracionInicioSuperiorIzquierda from '../../../../assets/styles/images/DeoracionInicioSuperiorIzquierda.png';
+import cabezasimo from '../../../../assets/styles/images/cabeza simo.png';
+
 export class QuienesSomosView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new QuienesSomosViewModel()
@@ -53,7 +60,7 @@ export class QuienesSomosView extends BaseView {
             </div>
             <div class="about-hero__visual">
               <div class="about-hero__robot-wrapper">
-                <img src="./assets/styles/images/cabeza simo.png" class="about-hero__robot" alt="Mascota SIMÖ" />
+                <img src=${cabezasimo} class="about-hero__robot" alt="Mascota SIMÖ" />
               </div>
             </div>
           </div>
@@ -62,8 +69,8 @@ export class QuienesSomosView extends BaseView {
         <!-- ─── IDEALES DE SIMÖ ────────────────────────────────── -->
         <section class="about-ideals" id="ideales">
           <!-- Swirls decorativas rosa simétricas -->
-          <img src="./assets/styles/images/DeoracionInicioSuperiorIzquierda.png" class="about-ideals__swirl about-ideals__swirl--left" alt="" />
-          <img src="./assets/styles/images/DeoracionInicioSuperiorIzquierda.png" class="about-ideals__swirl about-ideals__swirl--right" alt="" />
+          <img src=${DeoracionInicioSuperiorIzquierda} class="about-ideals__swirl about-ideals__swirl--left" alt="" />
+          <img src=${DeoracionInicioSuperiorIzquierda} class="about-ideals__swirl about-ideals__swirl--right" alt="" />
 
           <div class="about-ideals__inner">
             <h2 class="about-ideals__title">¡Ideales de SIMÖ!</h2>
@@ -73,25 +80,25 @@ export class QuienesSomosView extends BaseView {
                 id: 'simplicidad', 
                 name: 'Simplicidad', 
                 desc: 'Hacer del reciclaje tecnológico un proceso fácil y accesible para todos.', 
-                iconSvg: `<img src="./assets/styles/images/estrella 1.png" alt="Simplicidad" class="about-ideals__icon" />` 
+                iconSvg: `<img src=${estrella1} alt="Simplicidad" class="about-ideals__icon" />` 
               })}
               ${IdealCard({ 
                 id: 'conciencia', 
                 name: 'Conciencia ambiental', 
                 desc: 'Promover hábitos responsables que reduzcan el impacto de los residuos electrónicos.', 
-                iconSvg: `<img src="./assets/styles/images/estrella 2.png" alt="Conciencia" class="about-ideals__icon" />` 
+                iconSvg: `<img src=${estrella2} alt="Conciencia" class="about-ideals__icon" />` 
               })}
               ${IdealCard({ 
                 id: 'comunidad', 
                 name: 'Comunidad', 
                 desc: 'Conectar personas, empresas y ciudad alrededor de un objetivo común: cuidar el entorno.', 
-                iconSvg: `<img src="./assets/styles/images/estrella 3.png" alt="Comunidad" class="about-ideals__icon" />` 
+                iconSvg: `<img src=${estrella3} alt="Comunidad" class="about-ideals__icon" />` 
               })}
               ${IdealCard({ 
                 id: 'innovacion', 
                 name: 'Innovación', 
                 desc: 'Usar la tecnología como herramienta para generar cambios positivos y duraderos.', 
-                iconSvg: `<img src="./assets/styles/images/estrella 4.png" alt="Innovación" class="about-ideals__icon" />` 
+                iconSvg: `<img src=${estrella4} alt="Innovación" class="about-ideals__icon" />` 
               })}
             </div>
           </div>
@@ -110,14 +117,14 @@ export class QuienesSomosView extends BaseView {
             
             <div class="about-participate__cards">
               <div class="about-participate__card">
-                <img src="./assets/styles/images/estrella 3.png" class="about-participate__card-icon" alt="" />
+                <img src=${estrella3} class="about-participate__card-icon" alt="" />
                 <h3 class="about-participate__card-title">Usuario reciclador</h3>
                 <p class="about-participate__card-text">
                   Personas que <strong>entregan sus dispositivos</strong> electrónicos en desuso para darles un manejo responsable y contribuir al cuidado ambiental mientras <strong>reciben beneficios</strong> y recompensas.
                 </p>
               </div>
               <div class="about-participate__card">
-                <img src="./assets/styles/images/estrella 1.png" class="about-participate__card-icon" alt="" />
+                <img src=${estrella1} class="about-participate__card-icon" alt="" />
                 <h3 class="about-participate__card-title">Aliado recolector</h3>
                 <p class="about-participate__card-text">
                   Empresas o gestores <strong>encargados de recibir</strong>, clasificar y gestionar los dispositivos electrónicos <strong>para asegurar</strong> su correcto reciclaje y reutilización.

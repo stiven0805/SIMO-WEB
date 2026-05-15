@@ -14,6 +14,25 @@ import { bindNavEvents, bindFooterEvents } from './shared/landingShared.js'
 import { PublicNav, SharedFooter, ColabsHeroDecos } from '../../../shared/components/Layouts.js'
 import { ColabLogo } from '../../../shared/components/Cards.js'
 
+import Ecorecyclar from '../../../../assets/styles/images/Ecorecyclar.png';
+import Veolia from '../../../../assets/styles/images/Veolia.png';
+import Reco from '../../../../assets/styles/images/Reco.png';
+import FullCircle from '../../../../assets/styles/images/FullCircle.png';
+import Recopila from '../../../../assets/styles/images/Recopila.png';
+import Resiter from '../../../../assets/styles/images/Resiter.png';
+import EcoComputo from '../../../../assets/styles/images/EcoComputo.png';
+import RedVerde from '../../../../assets/styles/images/RedVerde.png';
+import Rafe from '../../../../assets/styles/images/Rafe.png';
+import Acampar from '../../../../assets/styles/images/Acampar.png';
+import Jumbo from '../../../../assets/styles/images/Jumbo.png';
+import PuntosColombia from '../../../../assets/styles/images/PuntosColombia.png';
+import Bettys from '../../../../assets/styles/images/Bettys.png';
+import Alkatronic from '../../../../assets/styles/images/Alkatronic.png';
+import Falabella from '../../../../assets/styles/images/Falabella.png';
+import Verdeo from '../../../../assets/styles/images/Verdeo.png';
+import Koaj from '../../../../assets/styles/images/Koaj.png';
+import HyM from '../../../../assets/styles/images/HyM.png';
+
 export class ColaboracionesView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new ColaboracionesViewModel()
@@ -55,15 +74,15 @@ export class ColaboracionesView extends BaseView {
                 una cultura más responsable con la tecnología y el medio ambiente.
               </p>
               <div class="colabs-card__grid">
-                <img src="./assets/styles/images/HyM.png" class="colabs-logo-img" alt="H&M" />
-                <img src="./assets/styles/images/Koaj.png" class="colabs-logo-img" alt="KOAJ" />
-                <img src="./assets/styles/images/Verdeo.png" class="colabs-logo-img" alt="Verdeo" />
-                <img src="./assets/styles/images/Falabella.png" class="colabs-logo-img" alt="Falabella" />
-                <img src="./assets/styles/images/Alkatronic.png" class="colabs-logo-img" alt="Alkatronic" />
-                <img src="./assets/styles/images/Bettys.png" class="colabs-logo-img" alt="Bettys" />
-                <img src="./assets/styles/images/PuntosColombia.png" class="colabs-logo-img" alt="Puntos Colombia" />
-                <img src="./assets/styles/images/Jumbo.png" class="colabs-logo-img" alt="Jumbo" />
-                <img src="./assets/styles/images/Acampar.png" class="colabs-logo-img" alt="Acampar" />
+                <img src=${HyM} class="colabs-logo-img" alt="H&M" />
+                <img src=${Koaj} class="colabs-logo-img" alt="KOAJ" />
+                <img src=${Verdeo} class="colabs-logo-img" alt="Verdeo" />
+                <img src=${Falabella} class="colabs-logo-img" alt="Falabella" />
+                <img src=${Alkatronic} class="colabs-logo-img" alt="Alkatronic" />
+                <img src=${Bettys} class="colabs-logo-img" alt="Bettys" />
+                <img src=${PuntosColombia} class="colabs-logo-img" alt="Puntos Colombia" />
+                <img src=${Jumbo} class="colabs-logo-img" alt="Jumbo" />
+                <img src=${Acampar} class="colabs-logo-img" alt="Acampar" />
               </div>
             </div>
           </div>
@@ -81,15 +100,15 @@ export class ColaboracionesView extends BaseView {
                 ambiental de los residuos tecnológicos.
               </p>
               <div class="colabs-card__grid">
-                <img src="./assets/styles/images/Rafe.png" class="colabs-logo-img colabs-logo-img--large" alt="RAEE" />
-                <img src="./assets/styles/images/RedVerde.png" class="colabs-logo-img" alt="Red Verde" />
-                <img src="./assets/styles/images/EcoComputo.png" class="colabs-logo-img" alt="Eco Computo" />
-                <img src="./assets/styles/images/Resiter.png" class="colabs-logo-img colabs-logo-img--large" alt="Resiter" />
-                <img src="./assets/styles/images/Recopila.png" class="colabs-logo-img" alt="Recopila" />
-                <img src="./assets/styles/images/FullCircle.png" class="colabs-logo-img" alt="Full Circle" />
-                <img src="./assets/styles/images/Reco.png" class="colabs-logo-img colabs-logo-img--large" alt="Reco" />
-                <img src="./assets/styles/images/Veolia.png" class="colabs-logo-img" alt="Veolia" />
-                <img src="./assets/styles/images/Ecorecyclar.png" class="colabs-logo-img colabs-logo-img--large" alt="Ecorecyclar" />
+                <img src=${Rafe} class="colabs-logo-img colabs-logo-img--large" alt="RAEE" />
+                <img src=${RedVerde} class="colabs-logo-img" alt="Red Verde" />
+                <img src=${EcoComputo} class="colabs-logo-img" alt="Eco Computo" />
+                <img src=${Resiter} class="colabs-logo-img colabs-logo-img--large" alt="Resiter" />
+                <img src=${Recopila} class="colabs-logo-img" alt="Recopila" />
+                <img src=${FullCircle} class="colabs-logo-img" alt="Full Circle" />
+                <img src=${Reco} class="colabs-logo-img colabs-logo-img--large" alt="Reco" />
+                <img src=${Veolia} class="colabs-logo-img" alt="Veolia" />
+                <img src=${Ecorecyclar} class="colabs-logo-img colabs-logo-img--large" alt="Ecorecyclar" />
               </div>
             </div>
           </div>

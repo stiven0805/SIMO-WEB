@@ -20,7 +20,7 @@ import { RegisterView } from './src/modules/auth/views/RegisterView.js'
 import { PasswordRecoveryView } from './src/modules/auth/views/PasswordRecoveryView.js'
 import { RecoverySentView } from './src/modules/auth/views/RecoverySentView.js'
 import { ConfirmAccountView } from './src/modules/auth/views/ConfirmAccountView.js'
-import { PerfilView } from './src/modules/dashboard/views/PerfilView.js'
+import { PerfilView } from './src/modules/profile/views/PerfilView.js'
 import { HistorialView } from './src/modules/dashboard/views/HistorialView.js'
 import { NotificacionesView } from './src/modules/dashboard/views/NotificacionesView.js'
 
@@ -68,10 +68,10 @@ async function openModal(ViewClass) {
   if (currentModal) {
     currentModal.destroy()
   }
-  
+
   const root = document.getElementById('modal-root')
   if (root) root.innerHTML = '' // Limpiar
-  
+
   currentModal = new ViewClass({ container: '#modal-root' })
   await currentModal.mount()
 }

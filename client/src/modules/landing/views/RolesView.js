@@ -15,6 +15,11 @@ import { PublicNav, SharedFooter, AyudaHeroDecorations } from '../../../shared/c
 import { HeroAyudaStep, RolePhoneMockup, ModificarPhoneMockup } from '../../../shared/components/Cards.js'
 import { IconFlower } from '../../../shared/components/Icons.js'
 
+import editar2 from '../../../../assets/styles/images/editar 2.png';
+import editar1 from '../../../../assets/styles/images/editar 1.png';
+import celularblanco2 from '../../../../assets/styles/images/celular blanco 2.png';
+import celularblanco1 from '../../../../assets/styles/images/celular blanco 1.png';
+
 export class RolesView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new RolesViewModel()
@@ -55,11 +60,11 @@ export class RolesView extends BaseView {
             <div class="ayuda-hero__phones-pair">
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num" style="color: #FFCD1C;">1</span>
-                <img src="./assets/styles/images/celular blanco 1.png" class="ayuda-mockups__phone-img" alt="Rol Paso 1" />
+                <img src=${celularblanco1} class="ayuda-mockups__phone-img" alt="Rol Paso 1" />
               </div>
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num" style="color: #FFCD1C;">2</span>
-                <img src="./assets/styles/images/celular blanco 2.png" class="ayuda-mockups__phone-img" alt="Rol Paso 2" />
+                <img src=${celularblanco2} class="ayuda-mockups__phone-img" alt="Rol Paso 2" />
               </div>
             </div>
           </div>
@@ -71,11 +76,11 @@ export class RolesView extends BaseView {
             <div class="ayuda-modificar__phones">
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num">1</span>
-                <img src="./assets/styles/images/editar 1.png" class="ayuda-mockups__phone-img" alt="Editar Paso 1" />
+                <img src=${editar1} class="ayuda-mockups__phone-img" alt="Editar Paso 1" />
               </div>
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num">2</span>
-                <img src="./assets/styles/images/editar 2.png" class="ayuda-mockups__phone-img" alt="Editar Paso 2" />
+                <img src=${editar2} class="ayuda-mockups__phone-img" alt="Editar Paso 2" />
               </div>
             </div>
 
