@@ -9,6 +9,39 @@ import { IconFlower, DeviceIcon } from './Icons.js';
 import FlorNegra from '../../../assets/styles/images/FlorNegra.png';
 import flor from '../../../assets/styles/images/flor.png';
 
+import imgCelularInv from '../../../assets/styles/images/celular inv.png';
+import imgBateria from '../../../assets/styles/images/bateria.png';
+import imgTablet from '../../../assets/styles/images/tablet.png';
+import imgNevera from '../../../assets/styles/images/nevera.png';
+import imgReciclaje from '../../../assets/styles/images/reciclaje.png';
+import imgTv from '../../../assets/styles/images/Tv.png';
+import imgCable from '../../../assets/styles/images/Cable.png';
+import imgPilas from '../../../assets/styles/images/Pilas.png';
+import imgMouse from '../../../assets/styles/images/mause.png';
+import imgLicuadora from '../../../assets/styles/images/licuadora.png';
+import imgLaptop from '../../../assets/styles/images/laptop.png';
+import imgCargador from '../../../assets/styles/images/cargador.png';
+import imgVentilador from '../../../assets/styles/images/ventilador.png';
+import imgPlancha from '../../../assets/styles/images/plancha.png';
+
+const IMAGE_MAP = {
+  'celular inv': imgCelularInv,
+  'bateria': imgBateria,
+  'tablet': imgTablet,
+  'nevera': imgNevera,
+  'reciclaje': imgReciclaje,
+  'tv': imgTv,
+  'cable': imgCable,
+  'pilas': imgPilas,
+  'mause': imgMouse,
+  'mouse': imgMouse,
+  'licuadora': imgLicuadora,
+  'laptop': imgLaptop,
+  'cargador': imgCargador,
+  'ventilador': imgVentilador,
+  'plancha': imgPlancha
+};
+
 /**
  * Tarjeta de Ideal (Usada en Quiénes Somos)
  */
@@ -28,7 +61,7 @@ export const HistorialCard = (item) => `
     <div class="historial-card__device">
       <span class="historial-card__qty">${item.quantity}</span>
       <div class="historial-card__img-container">
-        <img src="./assets/styles/images/${item.img}.png" alt="${item.device}" class="historial-card__img" />
+        <img src="${IMAGE_MAP[item.img] || imgCelularInv}" alt="${item.device}" class="historial-card__img" />
       </div>
       <span class="historial-card__label">${item.device}</span>
     </div>
@@ -49,7 +82,7 @@ export const NotificacionCard = (item) => {
       <div class="notif-card__device">
         <span class="notif-card__qty">${item.quantity}</span>
         <div class="notif-card__img-container">
-          <img src="./assets/styles/images/${item.img}.png" alt="${item.device}" class="notif-card__img" />
+          <img src="${IMAGE_MAP[item.img] || imgReciclaje}" alt="${item.device}" class="notif-card__img" />
         </div>
         <span class="notif-card__label">${item.device}</span>
       </div>
