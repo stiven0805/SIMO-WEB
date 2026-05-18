@@ -110,8 +110,15 @@ export class NotificacionesView extends BaseView {
               </div>
             ` : `
               <!-- VISTA LISTA -->
-              <div id="notif-list">
-                ${items.map(item => NotificacionCard(item)).join('')}
+              <div id="notif-list" style="width: 100%;">
+                ${items.length > 0 ? 
+                  items.map(item => NotificacionCard(item)).join('') :
+                  `<div class="empty-state" style="text-align: center; padding: 4rem 2rem; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1); width: 100%;">
+                     <div style="font-size: 3rem; margin-bottom: 1rem;">🔔</div>
+                     <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem;">No tienes notificaciones</h3>
+                     <p style="font-size: 0.95rem; color: #aaa; max-width: 400px; margin: 0 auto;">Aquí aparecerán los avisos y actualizaciones de tus solicitudes de reciclaje en tiempo real.</p>
+                   </div>`
+                }
               </div>
             `}
 
@@ -128,6 +135,9 @@ export class NotificacionesView extends BaseView {
 
   /** @override */
   _bindViewModel() {
+    this._subscribe('items', () => {
+      this.refresh()
+    })
     this._subscribe('selectedItem', () => {
       this.refresh()
     })
