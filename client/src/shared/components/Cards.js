@@ -23,6 +23,8 @@ import imgLaptop from '../../../assets/styles/images/laptop.png';
 import imgCargador from '../../../assets/styles/images/cargador.png';
 import imgVentilador from '../../../assets/styles/images/ventilador.png';
 import imgPlancha from '../../../assets/styles/images/plancha.png';
+import imgControl from '../../../assets/styles/images/control.png';
+import imgMicroondas from '../../../assets/styles/images/microondas.png';
 
 const IMAGE_MAP = {
   'celular inv': imgCelularInv,
@@ -39,7 +41,9 @@ const IMAGE_MAP = {
   'laptop': imgLaptop,
   'cargador': imgCargador,
   'ventilador': imgVentilador,
-  'plancha': imgPlancha
+  'plancha': imgPlancha,
+  'control': imgControl,
+  'microondas': imgMicroondas
 };
 
 /**

@@ -82,6 +82,10 @@ export class NotificacionesViewModel extends BaseViewModel {
           img = 'ventilador';
         } else if (msgLower.includes('plancha')) {
           img = 'plancha';
+        } else if (msgLower.includes('control')) {
+          img = 'control';
+        } else if (msgLower.includes('microondas') || msgLower.includes('horno')) {
+          img = 'microondas';
         }
 
         let points = 100;

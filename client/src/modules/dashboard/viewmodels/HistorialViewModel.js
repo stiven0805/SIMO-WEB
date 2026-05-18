@@ -64,6 +64,12 @@ export class HistorialViewModel extends BaseViewModel {
         } else if (devName.includes('plancha')) {
           img = 'plancha';
           color = 'pink';
+        } else if (devName.includes('control') || devName.includes('mando')) {
+          img = 'control';
+          color = 'gray';
+        } else if (devName.includes('micro') || devName.includes('horno')) {
+          img = 'microondas';
+          color = 'yellow';
         }
 
         let formattedDate = '--';

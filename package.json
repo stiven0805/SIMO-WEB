@@ -9,7 +9,7 @@
     "dev:server": "node --watch server/index.js",
     "build": "vite build client",
     "preview": "vite preview",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "npm run build && firebase deploy --only hosting",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "test": "vitest",
