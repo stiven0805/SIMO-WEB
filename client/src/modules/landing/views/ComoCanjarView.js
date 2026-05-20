@@ -15,6 +15,11 @@ import { PublicNav, SharedFooter, AyudaHeroDecorations } from '../../../shared/c
 import { HeroAyudaStep, AyudaPhoneMockup } from '../../../shared/components/Cards.js'
 import { IconFlower } from '../../../shared/components/Icons.js'
 
+import celularRosa1 from '../../../../assets/styles/images/celular rosa 1.png'
+import celularRosa2 from '../../../../assets/styles/images/celular rosa 2.png'
+import celularRosa3 from '../../../../assets/styles/images/celular rosa 3.png'
+import celularRosa4 from '../../../../assets/styles/images/celular rosa 4.png'
+
 export class ComoCanjarView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new ComoCanjarViewModel()
@@ -61,14 +66,14 @@ export class ComoCanjarView extends BaseView {
         <section class="ayuda-mockups">
           <div class="ayuda-mockups__inner">
             ${[
-        { num: 1, label: 'Ingresa a la sección <span style="color:#334E9D; font-weight:700;">Recompensas o Canjear</span> desde el menú principal.', img: 'celular rosa 1' },
-        { num: 2, label: '<span style="color:#334E9D; font-weight:700;">Visualiza las ofertas disponibles</span> y revisa cuántos puntos necesitas.', img: 'celular rosa 2' },
-        { num: 3, label: 'Elige el beneficio que <span style="color:#334E9D; font-weight:700;">deseas canjear.</span>', img: 'celular rosa 3' },
-        { num: 4, label: 'Confirma la acción y <span style="color:#334E9D; font-weight:700;">recibe tu cupón</span> en tu correo electrónico.', img: 'celular rosa 4' },
+        { num: 1, label: 'Ingresa a la sección <span style="color:#334E9D; font-weight:700;">Recompensas o Canjear</span> desde el menú principal.', img: celularRosa1 },
+        { num: 2, label: '<span style="color:#334E9D; font-weight:700;">Visualiza las ofertas disponibles</span> y revisa cuántos puntos necesitas.', img: celularRosa2 },
+        { num: 3, label: 'Elige el beneficio que <span style="color:#334E9D; font-weight:700;">deseas canjear.</span>', img: celularRosa3 },
+        { num: 4, label: 'Confirma la acción y <span style="color:#334E9D; font-weight:700;">recibe tu cupón</span> en tu correo electrónico.', img: celularRosa4 },
       ].map(s => `
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num">${s.num}</span>
-                <img src="./assets/styles/images/${s.img}.png" class="ayuda-mockups__phone-img" alt="Paso ${s.num}" />
+                <img src="${s.img}" class="ayuda-mockups__phone-img" alt="Paso ${s.num}" />
                 <p class="ayuda-mockups__caption">${s.label}</p>
               </div>
             `).join('')}

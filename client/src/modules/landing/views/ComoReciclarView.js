@@ -15,6 +15,11 @@ import { PublicNav, SharedFooter, AyudaHeroDecorations } from '../../../shared/c
 import { HeroAyudaStep, AyudaPhoneMockup } from '../../../shared/components/Cards.js'
 import { IconFlower } from '../../../shared/components/Icons.js'
 
+import celular1 from '../../../../assets/styles/images/celular 1.png'
+import celular2 from '../../../../assets/styles/images/celular 2.png'
+import celular3 from '../../../../assets/styles/images/celular 3.png'
+import celular4 from '../../../../assets/styles/images/celular 4.png'
+
 export class ComoReciclarView extends BaseView {
   constructor(options = {}) {
     const viewModel = options.viewModel || new ComoReciclarViewModel()
@@ -62,14 +67,14 @@ export class ComoReciclarView extends BaseView {
         <section class="ayuda-mockups">
           <div class="ayuda-mockups__inner">
             ${[
-        { num: 1, label: 'Desde la pantalla principal, <span style="color:#334E9D; font-weight:700;">ingresa al menú de Opciones</span> y selecciona la sección Reciclar para comenzar el proceso.', img: 'celular 1' },
-        { num: 2, label: 'Selecciona el tipo de dispositivo que deseas entregar. <span style="color:#334E9D; font-weight:700;">La aplicación mostrará categorías</span> para facilitar la selección.', img: 'celular 2' },
-        { num: 3, label: '<span style="color:#334E9D; font-weight:700;">Escoge si deseas</span> llevar el dispositivo a un punto de recolección o solicitar recogida.', img: 'celular 3' },
-        { num: 4, label: '<span style="color:#334E9D; font-weight:700;">Revisa la información y confirma la solicitud.</span> El estado cambiará cuando el proceso sea validado.', img: 'celular 4' },
+        { num: 1, label: 'Desde la pantalla principal, <span style="color:#334E9D; font-weight:700;">ingresa al menú de Opciones</span> y selecciona la sección Reciclar para comenzar el proceso.', img: celular1 },
+        { num: 2, label: 'Selecciona el tipo de dispositivo que deseas entregar. <span style="color:#334E9D; font-weight:700;">La aplicación mostrará categorías</span> para facilitar la selección.', img: celular2 },
+        { num: 3, label: '<span style="color:#334E9D; font-weight:700;">Escoge si deseas</span> llevar el dispositivo a un punto de recolección o solicitar recogida.', img: celular3 },
+        { num: 4, label: '<span style="color:#334E9D; font-weight:700;">Revisa la información y confirma la solicitud.</span> El estado cambiará cuando el proceso sea validado.', img: celular4 },
       ].map(s => `
               <div class="ayuda-mockups__item">
                 <span class="ayuda-mockups__step-num">${s.num}</span>
-                <img src="./assets/styles/images/${s.img}.png" class="ayuda-mockups__phone-img" alt="Paso ${s.num}" />
+                <img src="${s.img}" class="ayuda-mockups__phone-img" alt="Paso ${s.num}" />
                 <p class="ayuda-mockups__caption">${s.label}</p>
               </div>
             `).join('')}
